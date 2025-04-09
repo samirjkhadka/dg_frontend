@@ -142,7 +142,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold text-primary">
-            <img src="/images/download(1).svg"/>
+            <img src="/images/dglogo.png" alt="Logo" className="h-10 w-10" />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
