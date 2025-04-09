@@ -110,11 +110,11 @@ const Home = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleViewPortfolio = () => {
-    // Navigate to portfolio page and scroll to top
-    navigate("/portfolio");
-    window.scrollTo(0, 0);
-  };
+  // const handleViewPortfolio = () => {
+  //   // Navigate to portfolio page and scroll to top
+  //   navigate("/portfolio");
+  //   window.scrollTo(0, 0);
+  // };
 
   const handleViewAbout = () => {
     // Navigate to about page and scroll to top

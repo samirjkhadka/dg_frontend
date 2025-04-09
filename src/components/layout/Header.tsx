@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, memo, useCallback } from "react";
+import { useState, useEffect, memo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollSection } from "../../hooks/useScrollSection";
@@ -125,13 +125,13 @@ const Header = () => {
     [activeSection, isActive]
   );
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Contact", href: "/contact" },
-  ];
+  // const navigation = [
+  //   { name: "Home", href: "/" },
+  //   { name: "About", href: "/about" },
+  //   { name: "Services", href: "/services" },
+  //   { name: "Portfolio", href: "/portfolio" },
+  //   { name: "Contact", href: "/contact" },
+  // ];
 
   return (
     <header
@@ -142,7 +142,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold text-primary">
-            <img src="/images/download(1).svg" />
+            <img src="/images/download(1).svg"/>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">

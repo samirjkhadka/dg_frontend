@@ -669,7 +669,7 @@ const ProjectDetail = () => {
     return advantagesMap[projectId] || [];
   };
 
-  const getProjectGallery = (projectId: string): string[] => {
+  const getProjectGallery = (_projectId: string): string[] => {
     const baseImage = project?.image || "";
     return [
       baseImage,
