@@ -144,7 +144,7 @@ const ScrollToTopButton = memo(() => {
           }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50"
+          className="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 max-w-[90vw]"
           aria-label="Scroll to top"
         >
           <motion.div

@@ -20,7 +20,7 @@ const NavLinkComponent = memo(
     return (
       <button
         onClick={onClick}
-        className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+        className={`relative px-4 py-2 text-sm font-medium transition-colors md:text-base ${
           isActive ? "text-primary" : "text-gray-600 hover:text-primary"
         }`}
       >
@@ -139,7 +139,7 @@ const Header = () => {
         scrolled ? "bg-white shadow-md py-4" : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold text-primary">
             <img src="/images/dglogo.png" alt="Logo" className="h-10 w-10" />
@@ -164,14 +164,14 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg"
           >
-            <div className="container mx-auto px-4 py-4">
-              <nav className="flex flex-col space-y-4">
+            <div className="container mx-auto py-6">
+              <nav className="flex flex-col space-y-6">
                 {NAV_LINKS.map((link) => (
                   <NavLinkComponent
                     key={link.path}
