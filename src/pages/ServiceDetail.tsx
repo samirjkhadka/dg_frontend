@@ -28,15 +28,17 @@ const ServiceDetail = () => {
           <title>Service Not Found | Digihub</title>
         </Helmet>
         <div className="pt-20">
-          <div className="container py-20 text-center">
-            <h1 className="heading-1 mb-4">Service Not Found</h1>
-            <p className="text-gray-600 mb-8">The service you're looking for doesn't exist.</p>
-            <Link
-              to="/services"
-              className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-            >
-              Back to Services
-            </Link>
+          <div className="section-dark py-20 text-center">
+            <div className="container">
+              <h1 className="heading-1 mb-4">Service Not Found</h1>
+              <p className="text-gray-300 mb-8">The service you're looking for doesn't exist.</p>
+              <Link
+                to="/services"
+                className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+              >
+                Back to Services
+              </Link>
+            </div>
           </div>
         </div>
       </>
@@ -51,7 +53,7 @@ const ServiceDetail = () => {
       </Helmet>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-primary/5 to-primary/10">
+        <section className="section-dark py-20">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -67,17 +69,17 @@ const ServiceDetail = () => {
                   ← Back to Services
                 </Link>
               </div>
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center text-3xl mx-auto mb-6">
+              <div className="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center text-3xl mx-auto mb-6 backdrop-blur-sm border border-primary/30">
                 {service.icon}
               </div>
               <h1 className="heading-1 mb-6">{service.title}</h1>
-              <p className="text-lg text-gray-600">{service.description}</p>
+              <p className="text-lg text-gray-300">{service.description}</p>
             </motion.div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="py-20">
+        <section className="py-20 section-glass">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <motion.div
@@ -95,7 +97,7 @@ const ServiceDetail = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="flex items-start"
+                      className="flex items-start text-gray-300"
                     >
                       <span className="text-primary mr-2">✓</span>
                       <span>{feature}</span>
@@ -108,36 +110,36 @@ const ServiceDetail = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 rounded-2xl shadow-lg"
+                className="card-glass p-8 rounded-2xl shadow-lg"
               >
-                <h3 className="text-xl font-semibold mb-4">Why Choose Us</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white">Why Choose Us</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
                     <div>
-                      <h4 className="font-medium mb-1">Expert Team</h4>
-                      <p className="text-gray-600">Our experienced professionals deliver high-quality solutions.</p>
+                      <h4 className="font-medium mb-1 text-white">Expert Team</h4>
+                      <p className="text-gray-300">Our experienced professionals deliver high-quality solutions.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
                     <div>
-                      <h4 className="font-medium mb-1">Customized Approach</h4>
-                      <p className="text-gray-600">We tailor our services to meet your specific needs and goals.</p>
+                      <h4 className="font-medium mb-1 text-white">Customized Approach</h4>
+                      <p className="text-gray-300">We tailor our services to meet your specific needs and goals.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
                     <div>
-                      <h4 className="font-medium mb-1">Proven Track Record</h4>
-                      <p className="text-gray-600">We have a history of successful projects and satisfied clients.</p>
+                      <h4 className="font-medium mb-1 text-white">Proven Track Record</h4>
+                      <p className="text-gray-300">We have a history of successful projects and satisfied clients.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
                     <div>
-                      <h4 className="font-medium mb-1">Ongoing Support</h4>
-                      <p className="text-gray-600">We provide continuous support and maintenance for your solutions.</p>
+                      <h4 className="font-medium mb-1 text-white">Ongoing Support</h4>
+                      <p className="text-gray-300">We provide continuous support and maintenance for your solutions.</p>
                     </div>
                   </li>
                 </ul>
@@ -147,7 +149,7 @@ const ServiceDetail = () => {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 section-dark">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -157,7 +159,7 @@ const ServiceDetail = () => {
               className="text-center mb-12"
             >
               <h2 className="heading-2 mb-4">Our Process</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-300 max-w-2xl mx-auto">
                 We follow a systematic approach to deliver high-quality solutions that
                 meet your business needs.
               </p>
@@ -198,11 +200,11 @@ const ServiceDetail = () => {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
+                  <p className="text-gray-300">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -210,7 +212,7 @@ const ServiceDetail = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20">
+        <section className="py-20 section-glass">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -220,13 +222,13 @@ const ServiceDetail = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h2 className="heading-2 mb-4">Ready to Get Started?</h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-300 mb-8">
                 Let's discuss how our {service.title.toLowerCase()} services can help your business grow and succeed.
                 Contact us today for a free consultation.
               </p>
               <Link
                 to="/contact"
-                className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
               >
                 Contact Us
               </Link>

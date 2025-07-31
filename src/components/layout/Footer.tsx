@@ -245,7 +245,7 @@ const Footer = () => {
               transition={{ duration: 0.3 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl font-heading font-bold mb-2">Digihub</h3>
+              <img src="/images/Dghub-svg-logo.svg" alt="Digi Hub Logo" className="h-8 w-auto mb-2" />
               <p className="text-gray-300 mb-2 text-sm">
                 Transforming ideas into innovative digital solutions.
               </p>
@@ -310,7 +310,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="mt-6 pt-4 border-t border-gray-800 text-center text-gray-400 text-xs"
           >
-            <p>&copy; {currentYear} Digihub. All rights reserved.</p>
+            <p>&copy; {currentYear} Digi Hub. All rights reserved.</p>
           </motion.div>
         </div>
       </footer>

@@ -31,36 +31,38 @@ const Contact = () => {
       </Helmet>
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="container py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="heading-1 mb-6">
-                Get in <span className="text-primary">Touch</span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-8">
-                Have a project in mind? Let's discuss how we can help bring your
-                ideas to life.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 rounded-2xl shadow-lg"
-            >
-              <div className="aspect-square flex items-center justify-center">
-                <div className="text-6xl">📧</div>
-              </div>
-            </motion.div>
+        <section className="section-dark py-20">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h1 className="heading-1 mb-6">
+                  Get in <span className="text-primary-gradient">Touch</span>
+                </h1>
+                <p className="text-lg text-gray-300 mb-8 text-justify">
+                  Have a project in mind? Let's discuss how we can help bring your
+                  ideas to life.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="card-glass p-8 rounded-2xl shadow-lg"
+              >
+                <div className="aspect-square flex items-center justify-center">
+                  <div className="text-6xl">📧</div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Contact Form */}
-        <section className="bg-gray-50 py-20">
+        <section className="section-glass py-20">
           <div className="container">
             <div className="max-w-3xl mx-auto">
               <motion.form
@@ -69,13 +71,13 @@ const Contact = () => {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
                 onSubmit={handleSubmit}
-                className="bg-white p-8 rounded-lg shadow-md"
+                className="card-glass p-8 rounded-lg shadow-md"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-300 mb-2"
                     >
                       Name
                     </label>
@@ -85,14 +87,14 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400 backdrop-blur-sm"
                       required
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-300 mb-2"
                     >
                       Email
                     </label>
@@ -102,7 +104,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400 backdrop-blur-sm"
                       required
                     />
                   </div>
@@ -110,7 +112,7 @@ const Contact = () => {
                 <div className="mb-6">
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     Subject
                   </label>
@@ -120,14 +122,14 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400 backdrop-blur-sm"
                     required
                   />
                 </div>
                 <div className="mb-6">
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     Message
                   </label>
@@ -137,13 +139,13 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400 backdrop-blur-sm"
                     required
                   ></textarea>
                 </div>
                 <motion.button
                   type="submit"
-                  className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                  className="w-full bg-gradient-to-r from-primary to-blue-600 text-white py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -155,23 +157,23 @@ const Contact = () => {
         </section>
 
         {/* Contact Info */}
-        <section className="py-20">
+        <section className="py-20 section-dark">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
                   title: 'Address',
-                  content: '123 Innovation Street, Tech City, TC 12345',
+                  content: 'Kalash Building, Bhatbhateni, Naxal, Kathmandu',
                   icon: '📍',
                 },
                 {
                   title: 'Email',
-                  content: 'contact@neemolabs.com',
+                  content: 'info@digihub.com',
                   icon: '📧',
                 },
                 {
                   title: 'Phone',
-                  content: '+1 (555) 123-4567',
+                  content: '+977 01 4333333',
                   icon: '📱',
                 },
               ].map((item, index) => (
@@ -181,11 +183,11 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-center p-6 bg-white rounded-lg shadow-md"
+                  className="card-glass text-center p-6 rounded-lg shadow-md"
                 >
                   <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.content}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
+                  <p className="text-gray-300">{item.content}</p>
                 </motion.div>
               ))}
             </div>

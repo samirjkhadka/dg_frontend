@@ -21,14 +21,14 @@ const NavLinkComponent = memo(
       <button
         onClick={onClick}
         className={`relative px-4 py-2 text-sm font-medium transition-colors md:text-base ${
-          isActive ? "text-primary" : "text-gray-600 hover:text-primary"
+          isActive ? "text-white font-semibold" : "text-gray-300 hover:text-white"
         }`}
       >
         {link.label}
         {isActive && (
           <motion.div
             layoutId="activeSection"
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+            className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-blue-400"
             initial={false}
             transition={{ type: "spring", stiffness: 380, damping: 30 }}
           />
@@ -46,7 +46,7 @@ const MobileMenuButton = memo(
     return (
       <button
         onClick={onClick}
-        className="md:hidden p-2 text-gray-600 hover:text-primary focus:outline-none"
+        className="md:hidden p-2 text-gray-300 hover:text-primary focus:outline-none"
         aria-label="Toggle mobile menu"
       >
         <div className="w-6 h-5 relative">
@@ -136,13 +136,13 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-4" : "bg-transparent py-6"
+        scrolled ? "bg-slate-900/90 backdrop-blur-xl shadow-lg border-b border-slate-700/30 py-4" : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-primary">
-            <img src="/images/dglogo.png" alt="Logo" className="h-10 w-10" />
+          <Link to="/" className="text-2xl font-bold text-white">
+            <img src="/images/Dghub-svg-logo.svg" alt="Digi Hub Logo" className="h-12 w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
@@ -168,7 +168,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg"
+            className="md:hidden absolute top-full left-0 right-0 bg-slate-900/95 backdrop-blur-xl shadow-lg border-b border-slate-700/30"
           >
             <div className="container mx-auto py-6">
               <nav className="flex flex-col space-y-6">

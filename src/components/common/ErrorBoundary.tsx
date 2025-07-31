@@ -26,23 +26,23 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-          <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold text-red-600 mb-4">
+        <div className="min-h-screen flex items-center justify-center section-dark">
+          <div className="max-w-md w-full p-8 card-glass rounded-lg shadow-lg">
+            <h1 className="text-2xl font-bold text-red-400 mb-4">
               Oops! Something went wrong
             </h1>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-300 mb-4">
               We apologize for the inconvenience. Please try refreshing the page or
               contact support if the problem persists.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+              className="bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-2 rounded-lg hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105"
             >
               Refresh Page
             </button>
             {process.env.NODE_ENV === 'development' && (
-              <pre className="mt-4 p-4 bg-gray-100 rounded text-sm overflow-auto">
+              <pre className="mt-4 p-4 bg-slate-800/50 rounded text-sm overflow-auto text-gray-300 backdrop-blur-sm border border-slate-600/30">
                 {this.state.error?.toString()}
               </pre>
             )}

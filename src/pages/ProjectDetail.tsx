@@ -35,6 +35,9 @@ const ProjectDetail = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     const foundProject = projects.find((p: Project) => p.id === id);
     if (foundProject) {
       // Add additional project details
@@ -1048,9 +1051,9 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center section-dark">
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
+          <h1 className="text-3xl font-bold mb-4 text-white">Project Not Found</h1>
           <Link to="/portfolio" className="text-primary hover:underline">
             Return to Portfolio
           </Link>
@@ -1066,26 +1069,26 @@ const ProjectDetail = () => {
         <meta name="description" content={project.description} />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen">
         {/* Breadcrumb Navigation */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="pt-24 pb-4 px-4"
+          className="pt-24 pb-4 px-4 section-dark"
         >
           <div className="container mx-auto">
             <nav className="flex items-center text-sm">
               <Link
                 to="/"
-                className="text-gray-500 hover:text-primary transition-colors"
+                className="text-gray-300 hover:text-primary transition-colors"
               >
                 Home
               </Link>
               <span className="mx-2 text-gray-400">/</span>
               <Link
                 to="/portfolio"
-                className="text-gray-500 hover:text-primary transition-colors"
+                className="text-gray-300 hover:text-primary transition-colors"
               >
                 Portfolio
               </Link>
@@ -1096,7 +1099,7 @@ const ProjectDetail = () => {
         </motion.div>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-16 px-4">
+        <section className="pt-32 pb-16 px-4 section-dark">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1104,13 +1107,13 @@ const ProjectDetail = () => {
               transition={{ duration: 0.5 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4 backdrop-blur-sm border border-primary/30">
                 {project.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
                 {project.title}
               </h1>
-              <p className="text-xl text-gray-600 mb-8 text-justify">
+              <p className="text-xl text-gray-300 mb-8 text-justify">
                 {project.description}
               </p>
               <div className="flex flex-wrap justify-center gap-2">
@@ -1120,7 +1123,7 @@ const ProjectDetail = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm"
+                    className="px-4 py-2 bg-slate-700/50 text-gray-300 rounded-full text-sm backdrop-blur-sm border border-slate-600/30"
                   >
                     {tech}
                   </motion.span>
@@ -1131,7 +1134,7 @@ const ProjectDetail = () => {
         </section>
 
         {/* Project Gallery */}
-        <section className="py-16 px-4">
+        <section className="py-16 px-4 section-glass">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1160,96 +1163,53 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        {/* Project Timeline */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold mb-4">Project Timeline</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                A detailed breakdown of the development process and key
-                milestones.
-              </p>
-            </motion.div>
 
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200"></div>
-
-              {/* Timeline items */}
-              <div className="space-y-12">
-                {getProjectTimeline(project.id).map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className={`relative flex items-center ${
-                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                    }`}
-                  >
-                    {/* Timeline dot */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary rounded-full z-10"></div>
-
-                    {/* Content */}
-                    <div
-                      className={`w-5/12 ${
-                        index % 2 === 0 ? "text-right pr-8" : "pl-8"
-                      }`}
-                    >
-                      <h3 className="text-xl font-bold text-primary mb-2">
-                        {item.phase}
-                      </h3>
-                      <p className="text-gray-600 mb-1">{item.description}</p>
-                      <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
-                        {item.duration}
-                      </span>
-                    </div>
-
-                    {/* Empty div for spacing */}
-                    <div className="w-2/12"></div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Features Showcase */}
-        <section className="py-16 px-4 bg-gray-50">
-          <div className="container mx-auto">
+        <section className="py-20 px-4 section-glass relative overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute top-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          
+          <div className="container mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-center mb-12"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold mb-4">Key Features</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <h2 className="text-4xl font-bold mb-6 text-white">Key Features</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto text-justify">
                 Discover the powerful features that make this solution stand
-                out.
+                out from the competition and deliver exceptional value to users.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {getProjectFeatures(project.id).map((feature, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.8, delay: index * 0.15 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="relative bg-slate-800/40 backdrop-blur-xl border border-slate-700/30 rounded-3xl p-8 shadow-2xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer"
                 >
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
+                        <span className="text-3xl">{feature.icon}</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
+                    </div>
+                    <p className="text-gray-300 text-justify leading-relaxed text-base">
+                      {feature.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -1257,7 +1217,7 @@ const ProjectDetail = () => {
         </section>
 
         {/* Project Details */}
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-16 px-4 section-dark">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
@@ -1266,22 +1226,22 @@ const ProjectDetail = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <h2 className="text-3xl font-bold mb-6">About the Project</h2>
+                  <h2 className="text-3xl font-bold mb-6 text-white">About the Project</h2>
                   <div className="space-y-8">
                     <div>
-                      <h3 className="text-xl font-semibold mb-3">
+                      <h3 className="text-xl font-semibold mb-3 text-white">
                         The Challenge
                       </h3>
-                      <p className="text-gray-600">{project.challenge}</p>
+                      <p className="text-gray-300">{project.challenge}</p>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-3">
+                      <h3 className="text-xl font-semibold mb-3 text-white">
                         Our Solution
                       </h3>
-                      <p className="text-gray-600">{project.solution}</p>
+                      <p className="text-gray-300">{project.solution}</p>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-3">
+                      <h3 className="text-xl font-semibold mb-3 text-white">
                         Key Features
                       </h3>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -1294,7 +1254,7 @@ const ProjectDetail = () => {
                             className="flex items-start space-x-2"
                           >
                             <span className="text-primary">•</span>
-                            <span className="text-gray-600">
+                            <span className="text-gray-300">
                               {feature.title}
                             </span>
                           </motion.li>
@@ -1302,7 +1262,7 @@ const ProjectDetail = () => {
                       </ul>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-3">Advantages</h3>
+                      <h3 className="text-xl font-semibold mb-3 text-white">Advantages</h3>
                       <ul className="grid gap-3">
                         {project.advantages?.map((advantage, index) => (
                           <motion.li
@@ -1312,10 +1272,10 @@ const ProjectDetail = () => {
                             transition={{ duration: 0.3, delay: index * 0.1 }}
                             className="grid items-start space-x-2"
                           >
-                            <span className="text-gray-600 font-bold">
+                            <span className="text-gray-300 font-bold">
                               • {advantage.title}
                             </span>
-                            <span className="text-gray-600 text-justify">
+                            <span className="text-gray-300 text-justify">
                               {advantage.description}
                             </span>
                           </motion.li>
@@ -1324,7 +1284,7 @@ const ProjectDetail = () => {
                     </div>
                     {project.results && project.results.length > 0 && (
                       <div>
-                        <h3 className="text-xl font-semibold mb-3">Results</h3>
+                        <h3 className="text-xl font-semibold mb-3 text-white">Results</h3>
                         <ul className="space-y-2">
                           {project.results.map((result, index) => (
                             <motion.li
@@ -1335,7 +1295,7 @@ const ProjectDetail = () => {
                               className="flex items-start space-x-2"
                             >
                               <span className="text-primary">✓</span>
-                              <span className="text-gray-600">{result}</span>
+                              <span className="text-gray-300">{result}</span>
                             </motion.li>
                           ))}
                         </ul>
@@ -1349,34 +1309,39 @@ const ProjectDetail = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="bg-white p-6 rounded-lg shadow-lg sticky top-24"
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="relative bg-slate-800/40 backdrop-blur-xl border border-slate-700/30 rounded-3xl p-8 shadow-2xl sticky top-24"
                 >
-                  <h3 className="text-xl font-bold mb-4">Project Details</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold">Category</h4>
-                      <p className="text-gray-600">{project.category}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">Client</h4>
-                      <p className="text-gray-600">{project.client}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">Completion Date</h4>
-                      <p className="text-gray-600">{project.completionDate}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">Technologies Used</h4>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {project.technologies.map((tech, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 rounded-3xl"></div>
+                  
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-bold mb-6 text-white">Project Details</h3>
+                    <div className="space-y-6">
+                      <div className="p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+                        <h4 className="font-semibold text-primary mb-2">Category</h4>
+                        <p className="text-gray-300 text-justify">{project.category}</p>
+                      </div>
+                      <div className="p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+                        <h4 className="font-semibold text-primary mb-2">Client</h4>
+                        <p className="text-gray-300 text-justify">{project.client}</p>
+                      </div>
+                      <div className="p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+                        <h4 className="font-semibold text-primary mb-2">Completion Date</h4>
+                        <p className="text-gray-300 text-justify">{project.completionDate}</p>
+                      </div>
+                      <div className="p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+                        <h4 className="font-semibold text-primary mb-3">Technologies Used</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, index) => (
+                            <span
+                              key={index}
+                              className="px-4 py-2 bg-slate-700/50 text-gray-300 rounded-full text-sm backdrop-blur-sm border border-slate-600/30 hover:bg-primary/20 hover:border-primary/30 hover:text-primary transition-all duration-300"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1387,46 +1352,60 @@ const ProjectDetail = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
+        <section className="py-20 px-4 section-glass relative overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute top-20 right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+          
+          <div className="container mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-center mb-12"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold mb-4">Client Testimonials</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <h2 className="text-4xl font-bold mb-6 text-white">Client Testimonials</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto text-justify">
                 Hear what our clients have to say about their experience with
-                this solution.
+                this solution and how it has transformed their business operations.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {getProjectTestimonials(project.id).map((testimonial, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.8, delay: index * 0.15 }}
                   viewport={{ once: true }}
-                  className="bg-gray-50 rounded-lg p-8 shadow-lg"
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="relative bg-slate-800/40 backdrop-blur-xl border border-slate-700/30 rounded-3xl p-8 shadow-2xl hover:shadow-primary/10 transition-all duration-500"
                 >
-                  <div className="flex items-center mb-6">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h3 className="text-xl font-bold">{testimonial.name}</h3>
-                      <p className="text-gray-600">{testimonial.role}</p>
-                      <p className="text-primary">{testimonial.company}</p>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center mb-8">
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden mr-6 border-2 border-primary/30">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-white mb-2">{testimonial.name}</h3>
+                        <p className="text-gray-300 text-justify mb-1">{testimonial.role}</p>
+                        <p className="text-primary font-semibold">{testimonial.company}</p>
+                      </div>
                     </div>
+                    <blockquote className="text-gray-300 text-justify leading-relaxed text-lg italic relative">
+                      <div className="absolute -top-2 -left-2 text-4xl text-primary/30">"</div>
+                      {testimonial.quote}
+                      <div className="absolute -bottom-2 -right-2 text-4xl text-primary/30">"</div>
+                    </blockquote>
                   </div>
-                  <blockquote className="text-gray-700 italic">
-                    "{testimonial.quote}"
-                  </blockquote>
                 </motion.div>
               ))}
             </div>
@@ -1434,25 +1413,49 @@ const ProjectDetail = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto text-center">
+        <section className="py-20 px-4 section-dark relative overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute top-20 left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          
+          <div className="container mx-auto text-center relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <h2 className="text-3xl font-bold mb-6">
+              <h2 className="text-4xl font-bold mb-6 text-white">
                 Interested in a Similar Project?
               </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Let's discuss how we can help bring your ideas to life.
+              <p className="text-xl text-gray-300 mb-8 text-justify max-w-3xl mx-auto">
+                Let's discuss how we can help bring your ideas to life with our
+                expertise and innovative solutions tailored to your specific needs.
               </p>
-              <Link
-                to="/contact"
-                className="inline-block px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Get in Touch
-              </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center space-x-3 px-10 py-4 bg-gradient-to-r from-primary to-blue-600 text-white rounded-xl font-semibold hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+                >
+                  <span>Get in Touch</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </Link>
+              </motion.div>
             </motion.div>
           </div>
         </section>

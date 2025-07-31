@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import Carousel from "../components/home/Carousel";
+import HeroSection from "../components/home/Carousel";
 import Testimonials from "../components/home/Testimonials";
 
 interface Project {
@@ -125,20 +125,20 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Home | Digihub - Innovative Digital Solutions</title>
+        <title>Home | Digi Hub - Innovative Digital Solutions</title>
         <meta
           name="description"
-          content="Welcome to Digihub - Your partner in digital innovation. We specialize in creating cutting-edge solutions for businesses across various industries."
+          content="Welcome to Digi Hub - Your partner in digital innovation. We specialize in creating cutting-edge solutions for businesses across various industries."
         />
       </Helmet>
       <div className="pt-20">
-        {/* Hero Section with Carousel */}
+        {/* Hero Section */}
         <section id="home">
-          <Carousel />
+          <HeroSection />
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20">
+        <section id="about" className="py-20 section-dark">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -148,9 +148,9 @@ const Home = () => {
               className="text-center mb-12"
             >
               <h2 className="heading-2 mb-4">
-                About <span className="text-primary">Us</span>
+                About <span className="text-primary-gradient">Us</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-justify">
+              <p className="text-gray-300 max-w-2xl mx-auto text-justify">
                 We are focused on using the latest technology to transform the
                 capital markets, making them more efficient, transparent, and
                 accessible for everyone. By improving how investors and
@@ -170,7 +170,7 @@ const Home = () => {
                 className="space-y-6"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-primary/30">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-primary"
@@ -187,10 +187,10 @@ const Home = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">
+                    <h3 className="text-xl font-semibold mb-2 text-white">
                       Innovation at Our Core
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-300">
                       We stay ahead of technology trends to deliver solutions
                       that give your business a competitive edge.
                     </p>
@@ -198,7 +198,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-primary/30">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-primary"
@@ -215,8 +215,8 @@ const Home = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
-                    <p className="text-gray-600">
+                    <h3 className="text-xl font-semibold mb-2 text-white">Expert Team</h3>
+                    <p className="text-gray-300">
                       Our diverse team brings together years of experience
                       across various industries and technologies.
                     </p>
@@ -224,7 +224,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-primary/30">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-primary"
@@ -241,10 +241,10 @@ const Home = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">
+                    <h3 className="text-xl font-semibold mb-2 text-white">
                       Quality Assured
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-300">
                       We maintain the highest standards of quality throughout
                       the development process.
                     </p>
@@ -254,7 +254,7 @@ const Home = () => {
                 <div className="pt-4">
                   <button
                     onClick={handleViewAbout}
-                    className="inline-flex items-center bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
                   >
                     Learn More About Us
                     <svg
@@ -282,14 +282,14 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 rounded-2xl shadow-lg overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full -ml-16 -mb-16"></div>
+                <div className="card-glass p-8 rounded-2xl shadow-lg overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/10 rounded-full -ml-16 -mb-16"></div>
 
                   <div className="relative z-10">
                     <div className="aspect-square flex items-center justify-center">
                       <motion.div
-                        className="text-6xl font-bold text-primary"
+                        className="text-6xl font-bold text-primary-gradient"
                         animate={{
                           scale: [1, 1.05, 1],
                           rotate: [0, 5, 0, -5, 0],
@@ -309,56 +309,56 @@ const Home = () => {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md text-center"
+                    className="card-glass p-4 rounded-lg shadow-md text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <div className="text-3xl font-bold text-primary mb-1">
+                    <div className="text-3xl font-bold text-primary-gradient mb-1">
                       50+
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-300">
                       Projects Completed
                     </div>
                   </motion.div>
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md text-center"
+                    className="card-glass p-4 rounded-lg shadow-md text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     viewport={{ once: true }}
                   >
-                    <div className="text-3xl font-bold text-primary mb-1">
+                    <div className="text-3xl font-bold text-primary-gradient mb-1">
                       25+
                     </div>
-                    <div className="text-sm text-gray-600">Team Members</div>
+                    <div className="text-sm text-gray-300">Team Members</div>
                   </motion.div>
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md text-center"
+                    className="card-glass p-4 rounded-lg shadow-md text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <div className="text-3xl font-bold text-primary mb-1">
+                    <div className="text-3xl font-bold text-primary-gradient mb-1">
                       5+
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-300">
                       Years Experience
                     </div>
                   </motion.div>
                   <motion.div
-                    className="bg-white p-4 rounded-lg shadow-md text-center"
+                    className="card-glass p-4 rounded-lg shadow-md text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                     viewport={{ once: true }}
                   >
-                    <div className="text-3xl font-bold text-primary mb-1">
+                    <div className="text-3xl font-bold text-primary-gradient mb-1">
                       100%
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-300">
                       Client Satisfaction
                     </div>
                   </motion.div>
@@ -369,7 +369,7 @@ const Home = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-20 bg-gray-50">
+        <section id="services" className="py-20 section-glass">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -379,7 +379,7 @@ const Home = () => {
               className="text-center mb-12"
             >
               <h2 className="heading-2 mb-4">Our Services</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-300 max-w-2xl mx-auto text-justify">
                 We offer a comprehensive range of software development services
                 to help businesses thrive in the digital age.
               </p>
@@ -475,66 +475,68 @@ const Home = () => {
                   link: "/services#ui-ux-design",
                 },
               ].map((service, index) => (
-                <motion.div
+                <Link
+                  to={service.link}
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 group"
-                  whileHover={{ y: -5 }}
+                  className="block"
                 >
-                  <div
-                    className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="card-glass p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                    whileHover={{ y: -5 }}
                   >
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-gray-600">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-primary mr-2"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    to={service.link}
-                    className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors"
-                  >
-                    Learn More
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    <div
+                      className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </Link>
-                </motion.div>
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300 mb-6 text-justify">{service.description}</p>
+
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center text-gray-300">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-primary mr-2"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
+                      Learn More
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
 
@@ -548,7 +550,7 @@ const Home = () => {
             >
               <button
                 onClick={handleViewAllServices}
-                className="inline-flex items-center bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
               >
                 View All Services
                 <svg
@@ -571,7 +573,7 @@ const Home = () => {
         </section>
 
         {/* Portfolio Section */}
-        <section id="portfolio" className="py-20 bg-gray-50">
+        <section id="portfolio" className="py-20 section-dark">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -580,10 +582,10 @@ const Home = () => {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                 Our Products
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-gray-300 max-w-2xl mx-auto text-justify">
                 Explore some of our recent successful projects and see how we've
                 helped businesses achieve their goals.
               </p>
@@ -591,50 +593,52 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredProjects.map((project, index) => (
-                <motion.div
+                <Link
+                  to={`/portfolio/${project.id}`}
                   key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                  className="block"
                 >
-                  <div className="relative h-48">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="text-sm text-white/90 font-medium">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
-                        >
-                          {tech}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="card-glass rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                  >
+                    <div className="relative h-48">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <span className="text-sm text-white/90 font-medium">
+                          {project.category}
                         </span>
-                      ))}
+                      </div>
                     </div>
-                    <Link
-                      to={`/portfolio/${project.id}`}
-                      className="inline-block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                    >
-                      View Product Details
-                    </Link>
-                  </div>
-                </motion.div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2 text-white">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-300 mb-4 text-justify">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-slate-700/50 text-gray-300 rounded-full text-sm backdrop-blur-sm border border-slate-600/30"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="inline-block w-full text-center bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105">
+                        View Product Details
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
 
@@ -647,7 +651,7 @@ const Home = () => {
             >
               <Link
                 to="/portfolio"
-                className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
               >
                 View All Projects
               </Link>
@@ -661,7 +665,7 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-gray-50">
+        <section id="contact" className="py-20 section-glass">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -671,7 +675,7 @@ const Home = () => {
               className="text-center mb-12"
             >
               <h2 className="heading-2 mb-4">Contact Us</h2>
-              <p className="text-gray-600 max-w-3xl mx-auto">
+              <p className="text-gray-300 max-w-3xl mx-auto text-justify">
                 Have a project in mind? Get in touch with us to discuss how we
                 can help bring your ideas to life.
               </p>
@@ -683,55 +687,55 @@ const Home = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg shadow-md"
+                className="card-glass p-8 rounded-lg shadow-md"
               >
-                <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white">Get in Touch</h3>
                 <form className="space-y-4">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1"
                     >
                       Name
                     </label>
                     <input
                       type="text"
                       id="name"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-gray-400 backdrop-blur-sm"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1"
                     >
                       Email
                     </label>
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-gray-400 backdrop-blur-sm"
                       placeholder="Your email"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1"
                     >
                       Message
                     </label>
                     <textarea
                       id="message"
                       rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-gray-400 backdrop-blur-sm"
                       placeholder="Your message"
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors"
+                    className="w-full bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-3 rounded-md font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105"
                   >
                     Send Message
                   </button>
@@ -743,17 +747,17 @@ const Home = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg shadow-md"
+                className="card-glass p-8 rounded-lg shadow-md"
               >
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-xl font-semibold mb-4 text-white">
                   Contact Information
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="text-primary mr-4 text-xl">📍</div>
                     <div>
-                      <h4 className="font-medium">Address</h4>
-                      <p className="text-gray-600">
+                      <h4 className="font-medium text-white">Address</h4>
+                      <p className="text-gray-300">
                         Kalash Building, Bhatbhateni, Naxal, <br /> Kathmandu
                       </p>
                     </div>
@@ -761,22 +765,22 @@ const Home = () => {
                   <div className="flex items-start">
                     <div className="text-primary mr-4 text-xl">📧</div>
                     <div>
-                      <h4 className="font-medium">Email</h4>
-                      <p className="text-gray-600">info@digihub.com</p>
+                      <h4 className="font-medium text-white">Email</h4>
+                      <p className="text-gray-300">info@digihub.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="text-primary mr-4 text-xl">📱</div>
                     <div>
-                      <h4 className="font-medium">Phone</h4>
-                      <p className="text-gray-600">+977 01 4333333</p>
+                      <h4 className="font-medium text-white">Phone</h4>
+                      <p className="text-gray-300">+977 01 4333333</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="text-primary mr-4 text-xl">⏰</div>
                     <div>
-                      <h4 className="font-medium">Business Hours</h4>
-                      <p className="text-gray-600 text-justify">
+                      <h4 className="font-medium text-white">Business Hours</h4>
+                      <p className="text-gray-300 text-justify">
                         Sunday - Thursday: 9:00 AM - 6:00 PM <br />
                         Friday: 9:30 AM - 1:30 PM
                       </p>
@@ -798,7 +802,7 @@ const Home = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20">
+        <section className="py-20 section-dark">
           <div className="container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -808,13 +812,13 @@ const Home = () => {
               className="text-center"
             >
               <h2 className="heading-2 mb-4">Ready to Start Your Project?</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+              <p className="text-gray-300 max-w-2xl mx-auto mb-8 text-justify">
                 Let's discuss how we can help bring your ideas to life with our
                 expertise and innovative solutions.
               </p>
               <Link
                 to="/contact"
-                className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
               >
                 Get in Touch
               </Link>

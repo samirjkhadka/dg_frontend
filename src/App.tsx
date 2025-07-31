@@ -17,6 +17,7 @@ const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Demo = lazy(() => import("./pages/Demo"));
 
 // Configure React Query client
 const queryClient = new QueryClient({
@@ -36,10 +37,10 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
           <Helmet>
-            <title>Digihub - Innovative Digital Solutions</title>
+            <title>Digi Hub - Innovative Digital Solutions</title>
             <meta
               name="description"
-              content="Digihub - Transforming ideas into innovative digital solutions. Specializing in Fintech, Sports tech, Ecommerce, Agro Tech, and Hospitality & Tourism products."
+              content="Digi Hub - Transforming ideas into innovative digital solutions. Specializing in Fintech, Sports tech, Ecommerce, Agro Tech, and Hospitality & Tourism products."
             />
             <meta
               name="viewport"
@@ -60,6 +61,7 @@ function App() {
                     />
                     <Route path="/portfolio" element={<Portfolio />} />
                     <Route path="/portfolio/:id" element={<ProjectDetail />} />
+                    <Route path="/demo" element={<Demo />} />
                     <Route path="/contact" element={<Contact />} />
                   </Routes>
                 </Suspense>
