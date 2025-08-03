@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollSection } from "../../hooks/useScrollSection";
 import { useNavigation } from "../../hooks/useNavigation";
-import { NAV_LINKS } from "../../constants/navigation";
+import { useNavigation as useNavigationData } from "../../hooks/useContent";
 import { NavLink } from "../../types/navigation";
 
 // Memoized navigation link component for better performance
@@ -77,6 +77,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { handleNavClick, isActive } = useNavigation();
+  
+  // Fetch navigation data from API
+  const { data: navigationData, isLoading: navigationLoading } = useNavigationData();
+  
   const { activeSection } = useScrollSection([
     "home",
     "about",
@@ -146,12 +150,24 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {NAV_LINKS.map((link) => (
+            {navigationData?.data?.map((navItem) => (
               <NavLinkComponent
-                key={link.path}
-                link={link}
-                isActive={checkIsActive(link)}
-                onClick={() => handleNavClick(link)}
+                key={navItem.id}
+                link={{
+                  path: navItem.url,
+                  label: navItem.title,
+                  sectionId: navItem.url.replace('/', '').replace('#', '')
+                }}
+                isActive={checkIsActive({
+                  path: navItem.url,
+                  label: navItem.title,
+                  sectionId: navItem.url.replace('/', '').replace('#', '')
+                })}
+                onClick={() => handleNavClick({
+                  path: navItem.url,
+                  label: navItem.title,
+                  sectionId: navItem.url.replace('/', '').replace('#', '')
+                })}
               />
             ))}
           </nav>
@@ -172,13 +188,25 @@ const Header = () => {
           >
             <div className="container mx-auto py-6">
               <nav className="flex flex-col space-y-6">
-                {NAV_LINKS.map((link) => (
+                {navigationData?.data?.map((navItem) => (
                   <NavLinkComponent
-                    key={link.path}
-                    link={link}
-                    isActive={checkIsActive(link)}
+                    key={navItem.id}
+                    link={{
+                      path: navItem.url,
+                      label: navItem.title,
+                      sectionId: navItem.url.replace('/', '').replace('#', '')
+                    }}
+                    isActive={checkIsActive({
+                      path: navItem.url,
+                      label: navItem.title,
+                      sectionId: navItem.url.replace('/', '').replace('#', '')
+                    })}
                     onClick={() => {
-                      handleNavClick(link);
+                      handleNavClick({
+                        path: navItem.url,
+                        label: navItem.title,
+                        sectionId: navItem.url.replace('/', '').replace('#', '')
+                      });
                       setIsOpen(false);
                     }}
                   />

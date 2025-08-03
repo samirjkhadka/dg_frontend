@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "../components/home/Carousel";
 import Testimonials from "../components/home/Testimonials";
+import { useHeroSection, useServices, useProjects } from "../hooks/useContent";
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 interface Project {
   id: string;
@@ -103,6 +105,11 @@ const featuredProjects: Project[] = [
 
 const Home = () => {
   const navigate = useNavigate();
+  
+  // Fetch data from API
+  const { data: heroData, isLoading: heroLoading, error: heroError } = useHeroSection();
+  const { data: servicesData, isLoading: servicesLoading, error: servicesError } = useServices();
+  const { data: projectsData, isLoading: projectsLoading, error: projectsError } = useProjects();
 
   const handleViewAllServices = () => {
     // Navigate to services page and scroll to top
@@ -110,17 +117,34 @@ const Home = () => {
     window.scrollTo(0, 0);
   };
 
-  // const handleViewPortfolio = () => {
-  //   // Navigate to portfolio page and scroll to top
-  //   navigate("/portfolio");
-  //   window.scrollTo(0, 0);
-  // };
+  const handleViewPortfolio = () => {
+    // Navigate to portfolio page and scroll to top
+    navigate("/portfolio");
+    window.scrollTo(0, 0);
+  };
 
   const handleViewAbout = () => {
     // Navigate to about page and scroll to top
     navigate("/about");
     window.scrollTo(0, 0);
   };
+
+  // Show loading spinner if any data is loading
+  if (heroLoading || servicesLoading || projectsLoading) {
+    return <LoadingSpinner />;
+  }
+
+  // Show error message if any data failed to load
+  if (heroError || servicesError || projectsError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading Content</h2>
+          <p className="text-gray-600">Please try refreshing the page.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -134,7 +158,7 @@ const Home = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <section id="home">
-          <HeroSection />
+          <HeroSection heroData={heroData?.data} />
         </section>
 
         {/* About Section */}

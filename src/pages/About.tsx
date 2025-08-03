@@ -1,13 +1,35 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { FaRocket, FaEye, FaUsers, FaLightbulb, FaCode, FaHeart, FaStar, FaCheckCircle } from "react-icons/fa";
+import { useAboutSection } from "../hooks/useContent";
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const About = () => {
+  // Fetch about section data from API
+  const { data: aboutData, isLoading: aboutLoading, error: aboutError } = useAboutSection();
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.5 },
   };
+
+  // Show loading spinner if data is loading
+  if (aboutLoading) {
+    return <LoadingSpinner />;
+  }
+
+  // Show error message if data failed to load
+  if (aboutError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading About Section</h2>
+          <p className="text-gray-600">Please try refreshing the page.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -53,12 +75,10 @@ const About = () => {
                 </motion.div>
                 
                 <h1 className="heading-1">
-                  About <span className="text-primary-gradient">Digi Hub</span>
+                  {aboutData?.data?.title || "About Digi Hub"}
                 </h1>
                 <p className="text-xl text-gray-200 leading-relaxed text-justify">
-                  We are a team of passionate developers, designers, and
-                  innovators dedicated to creating cutting-edge digital solutions
-                  that transform businesses and enhance user experiences.
+                  {aboutData?.data?.description || "We are a team of passionate developers, designers, and innovators dedicated to creating cutting-edge digital solutions that transform businesses and enhance user experiences."}
                 </p>
               </motion.div>
               <motion.div
@@ -173,6 +193,52 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        {/* Stats Section */}
+        {aboutData?.data?.stats && aboutData.data.stats.length > 0 && (
+          <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 overflow-hidden">
+            {/* Background effects */}
+            <div className="absolute top-10 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+            <div className="container relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2 className="heading-2 mb-6">Our Achievements</h2>
+                <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                  Numbers that reflect our commitment to excellence
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {aboutData.data.stats.map((stat, index) => (
+                  <motion.div
+                    key={stat.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300">
+                      <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 mb-4">
+                        {stat.value}
+                      </div>
+                      <div className="text-lg text-gray-300 font-medium">
+                        {stat.label}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Values */}
         <section className="relative py-20 bg-gradient-to-br from-slate-900 via-purple-900/10 to-slate-900 overflow-hidden">

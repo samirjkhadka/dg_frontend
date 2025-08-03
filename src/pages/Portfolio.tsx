@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { useProjects } from '../hooks/useContent';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 export const projects = [
   {
@@ -69,6 +71,26 @@ export const projects = [
 ];
 
 const Portfolio = () => {
+  // Fetch projects from API
+  const { data: projectsData, isLoading: projectsLoading, error: projectsError } = useProjects();
+
+  // Show loading spinner if data is loading
+  if (projectsLoading) {
+    return <LoadingSpinner />;
+  }
+
+  // Show error message if data failed to load
+  if (projectsError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading Portfolio</h2>
+          <p className="text-gray-600">Please try refreshing the page.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Helmet>
@@ -181,7 +203,7 @@ const Portfolio = () => {
           
           <div className="container relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {projects.map((project, index) => (
+              {projectsData?.data?.map((project, index) => (
                 <Link
                   to={`/portfolio/${project.id}`}
                   key={project.id}
@@ -228,7 +250,7 @@ const Portfolio = () => {
                       
                       {/* Technologies */}
                       <div className="flex flex-wrap gap-3 mb-6">
-                        {project.technologies.map((tech) => (
+                        {project.technologies?.map((tech) => (
                           <span
                             key={tech}
                             className="px-4 py-2 bg-slate-700/50 text-gray-300 rounded-full text-sm backdrop-blur-sm border border-slate-600/30 hover:bg-primary/20 hover:border-primary/30 hover:text-primary transition-all duration-300"

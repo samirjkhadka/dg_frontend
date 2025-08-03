@@ -55,7 +55,18 @@ const codeSnippets = [
   }
 ];
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  heroData?: {
+    title: string;
+    subtitle: string;
+    description: string;
+    backgroundImage: string;
+    ctaText: string;
+    ctaLink: string;
+  };
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ heroData }) => {
   const [currentCodeIndex, setCurrentCodeIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -171,9 +182,9 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-6xl lg:text-7xl font-bold leading-tight"
             >
-              <span className="text-white">We Build</span>
+              <span className="text-white">{heroData?.title || "We Build"}</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-purple-400">
-                Digital Solutions
+                {heroData?.subtitle || "Digital Solutions"}
               </span>
               <span className="text-white">That Matter</span>
             </motion.h1>
@@ -184,8 +195,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl text-gray-300 leading-relaxed max-w-lg"
             >
-              Transform your ideas into powerful software solutions. We specialize in 
-              web development, mobile apps, and enterprise software that drives business growth.
+              {heroData?.description || "Transform your ideas into powerful software solutions. We specialize in web development, mobile apps, and enterprise software that drives business growth."}
             </motion.p>
 
             {/* Feature highlights */}
@@ -216,10 +226,10 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link
-                to="/services"
+                to={heroData?.ctaLink || "/services"}
                 className="group inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
               >
-                <span>Explore Services</span>
+                <span>{heroData?.ctaText || "Explore Services"}</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
               

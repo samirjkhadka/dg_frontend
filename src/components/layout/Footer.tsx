@@ -10,6 +10,7 @@ import {
   FaArrowUp,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { useFooterInfo, useContactInfo } from "../../hooks/useContent";
 
 // Memoized social icon component with enhanced animations
 const SocialIcon = memo(
@@ -228,6 +229,9 @@ const ScrollProgressIndicator = memo(() => {
 ScrollProgressIndicator.displayName = "ScrollProgressIndicator";
 
 const Footer = () => {
+  // Fetch footer and contact data from API
+  const { data: footerData } = useFooterInfo();
+  const { data: contactData } = useContactInfo();
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
@@ -247,7 +251,7 @@ const Footer = () => {
             >
               <img src="/images/Dghub-svg-logo.svg" alt="Digi Hub Logo" className="h-8 w-auto mb-2" />
               <p className="text-gray-300 mb-2 text-sm">
-                Transforming ideas into innovative digital solutions.
+                {footerData?.data?.description || "Transforming ideas into innovative digital solutions."}
               </p>
               <div className="flex space-x-3">
                 <SocialIcon
@@ -277,10 +281,18 @@ const Footer = () => {
             >
               <h4 className="text-base font-semibold mb-2">Quick Links</h4>
               <ul className="space-y-1">
-                <FooterLink to="/about">About Us</FooterLink>
-                <FooterLink to="/services">Services</FooterLink>
-                <FooterLink to="/portfolio">Portfolio</FooterLink>
-                <FooterLink to="/contact">Contact</FooterLink>
+                {footerData?.data?.links?.map((link) => (
+                  <FooterLink key={link.id} to={link.url}>
+                    {link.title}
+                  </FooterLink>
+                )) || (
+                  <>
+                    <FooterLink to="/about">About Us</FooterLink>
+                    <FooterLink to="/services">Services</FooterLink>
+                    <FooterLink to="/portfolio">Portfolio</FooterLink>
+                    <FooterLink to="/contact">Contact</FooterLink>
+                  </>
+                )}
               </ul>
             </motion.div>
 
@@ -294,10 +306,14 @@ const Footer = () => {
               <h4 className="text-base font-semibold mb-2">Contact</h4>
               <ul className="space-y-1">
                 <ContactItem icon={FaMapMarkerAlt}>
-                  Kalash Building, Naxal, Bhatbhateni <br /> Kathmandu, Nepal
+                  {contactData?.data?.address || "Kalash Building, Naxal, Bhatbhateni, Kathmandu, Nepal"}
                 </ContactItem>
-                <ContactItem icon={FaEnvelope}>info@digihub.io</ContactItem>
-                <ContactItem icon={FaPhone}>+977 01 4333333</ContactItem>
+                <ContactItem icon={FaEnvelope}>
+                  {contactData?.data?.email || "info@digihub.io"}
+                </ContactItem>
+                <ContactItem icon={FaPhone}>
+                  {contactData?.data?.phone || "+977 01 4333333"}
+                </ContactItem>
               </ul>
             </motion.div>
           </div>

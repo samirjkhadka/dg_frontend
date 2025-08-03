@@ -1,14 +1,36 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useContactInfo } from '../hooks/useContent';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 const Contact = () => {
+  // Fetch contact info from API
+  const { data: contactData, isLoading: contactLoading, error: contactError } = useContactInfo();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
   });
+
+  // Show loading spinner if data is loading
+  if (contactLoading) {
+    return <LoadingSpinner />;
+  }
+
+  // Show error message if data failed to load
+  if (contactError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading Contact Information</h2>
+          <p className="text-gray-600">Please try refreshing the page.</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -163,17 +185,17 @@ const Contact = () => {
               {[
                 {
                   title: 'Address',
-                  content: 'Kalash Building, Bhatbhateni, Naxal, Kathmandu',
+                  content: contactData?.data?.address || 'Kalash Building, Bhatbhateni, Naxal, Kathmandu',
                   icon: '📍',
                 },
                 {
                   title: 'Email',
-                  content: 'info@digihub.com',
+                  content: contactData?.data?.email || 'info@digihub.com',
                   icon: '📧',
                 },
                 {
                   title: 'Phone',
-                  content: '+977 01 4333333',
+                  content: contactData?.data?.phone || '+977 01 4333333',
                   icon: '📱',
                 },
               ].map((item, index) => (
@@ -191,6 +213,32 @@ const Contact = () => {
                 </motion.div>
               ))}
             </div>
+            
+            {/* Social Links */}
+            {contactData?.data?.socialLinks && contactData.data.socialLinks.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="mt-12 text-center"
+              >
+                <h3 className="text-2xl font-semibold mb-6 text-white">Follow Us</h3>
+                <div className="flex justify-center space-x-6">
+                  {contactData.data.socialLinks.map((socialLink) => (
+                    <a
+                      key={socialLink.id}
+                      href={socialLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-3xl hover:text-primary transition-colors duration-300"
+                    >
+                      {socialLink.icon}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
         </section>
       </div>
