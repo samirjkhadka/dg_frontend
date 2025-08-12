@@ -11,6 +11,16 @@ export const useHeroSection = () => {
   });
 };
 
+// Custom hook for fetching hero stats
+export const useHeroStats = () => {
+  return useQuery({
+    queryKey: ['hero-stats'],
+    queryFn: contentService.getHeroStats,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
+  });
+};
+
 // Custom hook for fetching services
 export const useServices = () => {
   return useQuery({

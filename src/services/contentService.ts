@@ -12,6 +12,17 @@ export interface HeroSection {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  stats?: HeroStat[];
+}
+
+export interface HeroStat {
+  id: number;
+  label: string;
+  number: string;
+  icon: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Service {
@@ -118,11 +129,15 @@ export interface DemoVideo {
 export const contentService = {
   // Hero Section
   getHeroSection: (): Promise<ApiResponse<HeroSection>> =>
-    api.get<HeroSection>('/hero/active'),
+    api.get<HeroSection>('/hero/section'),
+
+  // Hero Stats
+  getHeroStats: (): Promise<ApiResponse<HeroStat[]>> =>
+    api.get<HeroStat[]>('/hero/stats'),
 
   // Services
   getServices: (): Promise<ApiResponse<Service[]>> =>
-    api.get<Service[]>('/services/active'),
+    api.get<Service[]>('/services'),
   
   getServiceById: (id: number): Promise<ApiResponse<Service>> =>
     api.get<Service>(`/services/${id}`),
@@ -132,18 +147,18 @@ export const contentService = {
 
   // Projects
   getProjects: (): Promise<ApiResponse<Project[]>> =>
-    api.get<Project[]>('/projects/active'),
+    api.get<Project[]>('/projects'),
   
   getProjectById: (id: number): Promise<ApiResponse<Project>> =>
     api.get<Project>(`/projects/${id}`),
 
   // About
   getAboutSection: (): Promise<ApiResponse<AboutSection>> =>
-    api.get<AboutSection>('/about/active'),
+    api.get<AboutSection>('/about/section'),
 
   // Contact
   getContactInfo: (): Promise<ApiResponse<ContactInfo>> =>
-    api.get<ContactInfo>('/contact/active'),
+    api.get<ContactInfo>('/contact/section'),
 
   // Navigation
   getNavigation: (): Promise<ApiResponse<NavigationItem[]>> =>
@@ -151,11 +166,11 @@ export const contentService = {
 
   // Footer
   getFooterInfo: (): Promise<ApiResponse<FooterInfo>> =>
-    api.get<FooterInfo>('/footer/active'),
+    api.get<FooterInfo>('/footer/section'),
 
   // Demo Videos
   getDemoVideos: (): Promise<ApiResponse<DemoVideo[]>> =>
-    api.get<DemoVideo[]>('/demo-videos/active'),
+    api.get<DemoVideo[]>('/demo-videos/section'),
 };
 
 export default contentService; 

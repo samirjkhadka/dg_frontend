@@ -55,6 +55,16 @@ const codeSnippets = [
   }
 ];
 
+interface HeroStat {
+  id: number;
+  label: string;
+  number: string;
+  icon: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
 interface HeroSectionProps {
   heroData?: {
     title: string;
@@ -64,9 +74,10 @@ interface HeroSectionProps {
     ctaText: string;
     ctaLink: string;
   };
+  heroStats?: HeroStat[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ heroData }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({ heroData, heroStats }) => {
   const [currentCodeIndex, setCurrentCodeIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -180,13 +191,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroData }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-6xl lg:text-7xl font-bold leading-tight"
+              className="text-6xl lg:text-6xl font-bold leading-tight"
             >
               <span className="text-white">{heroData?.title || "We Build"}</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-purple-400">
                 {heroData?.subtitle || "Digital Solutions"}
               </span>
-              <span className="text-white">That Matter</span>
+              {/* <span className="text-white">That Matter</span> */}
             </motion.h1>
 
             <motion.p
@@ -249,18 +260,31 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroData }) => {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10"
             >
-              <div className="text-center">
-                <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">100+</div>
-                <div className="text-sm text-gray-400 font-medium">Projects Delivered</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">50+</div>
-                <div className="text-sm text-gray-400 font-medium">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">24/7</div>
-                <div className="text-sm text-gray-400 font-medium">Support</div>
-              </div>
+              {heroStats && heroStats.length > 0 ? (
+                heroStats.slice(0, 3).map((stat, index) => (
+                  <div key={stat.id} className="text-center">
+                    <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
+                      {stat.number}
+                    </div>
+                    <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                  </div>
+                ))
+              ) : (
+                <>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">100+</div>
+                    <div className="text-sm text-gray-400 font-medium">Projects Delivered</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">50+</div>
+                    <div className="text-sm text-gray-400 font-medium">Happy Clients</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">24/7</div>
+                    <div className="text-sm text-gray-400 font-medium">Support</div>
+                  </div>
+                </>
+              )}
             </motion.div>
           </motion.div>
 

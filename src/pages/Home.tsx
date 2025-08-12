@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "../components/home/Carousel";
 import Testimonials from "../components/home/Testimonials";
-import { useHeroSection, useServices, useProjects } from "../hooks/useContent";
+import { useHeroSection, useHeroStats, useServices, useProjects } from "../hooks/useContent";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
 interface Project {
@@ -108,6 +108,7 @@ const Home = () => {
   
   // Fetch data from API
   const { data: heroData, isLoading: heroLoading, error: heroError } = useHeroSection();
+  const { data: heroStats, isLoading: heroStatsLoading, error: heroStatsError } = useHeroStats();
   const { data: servicesData, isLoading: servicesLoading, error: servicesError } = useServices();
   const { data: projectsData, isLoading: projectsLoading, error: projectsError } = useProjects();
 
@@ -130,12 +131,12 @@ const Home = () => {
   };
 
   // Show loading spinner if any data is loading
-  if (heroLoading || servicesLoading || projectsLoading) {
+  if (heroLoading || heroStatsLoading || servicesLoading || projectsLoading) {
     return <LoadingSpinner />;
   }
 
   // Show error message if any data failed to load
-  if (heroError || servicesError || projectsError) {
+  if (heroError || heroStatsError || servicesError || projectsError) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -158,7 +159,7 @@ const Home = () => {
       <div className="pt-20">
         {/* Hero Section */}
         <section id="home">
-          <HeroSection heroData={heroData?.data} />
+          <HeroSection heroData={heroData?.data} heroStats={heroStats?.data} />
         </section>
 
         {/* About Section */}
@@ -332,60 +333,82 @@ const Home = () => {
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
-                  <motion.div
-                    className="card-glass p-4 rounded-lg shadow-md text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="text-3xl font-bold text-primary-gradient mb-1">
-                      50+
-                    </div>
-                    <div className="text-sm text-gray-300">
-                      Projects Completed
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    className="card-glass p-4 rounded-lg shadow-md text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="text-3xl font-bold text-primary-gradient mb-1">
-                      25+
-                    </div>
-                    <div className="text-sm text-gray-300">Team Members</div>
-                  </motion.div>
-                  <motion.div
-                    className="card-glass p-4 rounded-lg shadow-md text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="text-3xl font-bold text-primary-gradient mb-1">
-                      5+
-                    </div>
-                    <div className="text-sm text-gray-300">
-                      Years Experience
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    className="card-glass p-4 rounded-lg shadow-md text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="text-3xl font-bold text-primary-gradient mb-1">
-                      100%
-                    </div>
-                    <div className="text-sm text-gray-300">
-                      Client Satisfaction
-                    </div>
-                  </motion.div>
+                  {heroStats?.data && heroStats.data.length > 0 ? (
+                    heroStats.data.slice(0, 4).map((stat, index) => (
+                      <motion.div
+                        key={stat.id}
+                        className="card-glass p-4 rounded-lg shadow-md text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="text-3xl font-bold text-primary-gradient mb-1">
+                          {stat.number}
+                        </div>
+                        <div className="text-sm text-gray-300">
+                          {stat.label}
+                        </div>
+                      </motion.div>
+                    ))
+                  ) : (
+                    <>
+                      <motion.div
+                        className="card-glass p-4 rounded-lg shadow-md text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="text-3xl font-bold text-primary-gradient mb-1">
+                          50+
+                        </div>
+                        <div className="text-sm text-gray-300">
+                          Projects Completed
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        className="card-glass p-4 rounded-lg shadow-md text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="text-3xl font-bold text-primary-gradient mb-1">
+                          25+
+                        </div>
+                        <div className="text-sm text-gray-300">Team Members</div>
+                      </motion.div>
+                      <motion.div
+                        className="card-glass p-4 rounded-lg shadow-md text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="text-3xl font-bold text-primary-gradient mb-1">
+                          5+
+                        </div>
+                        <div className="text-sm text-gray-300">
+                          Years Experience
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        className="card-glass p-4 rounded-lg shadow-md text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="text-3xl font-bold text-primary-gradient mb-1">
+                          100%
+                        </div>
+                        <div className="text-sm text-gray-300">
+                          Client Satisfaction
+                        </div>
+                      </motion.div>
+                    </>
+                  )}
                 </div>
               </motion.div>
             </div>
