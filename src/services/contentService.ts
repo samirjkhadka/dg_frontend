@@ -31,6 +31,10 @@ export interface Service {
   description: string;
   icon: string;
   image: string;
+  link: string;
+  color: string;
+  title: string;
+  route?: string; // Optional route for navigation
   categoryId: number;
   category: ServiceCategory;
   features: string[];
@@ -43,6 +47,8 @@ export interface ServiceCategory {
   id: number;
   name: string;
   description: string;
+  image: string;
+  title: string;
   icon: string;
   isActive: boolean;
 }
@@ -69,6 +75,10 @@ export interface AboutSection {
   image: string;
   stats: AboutStat[];
   isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  mission?: string; // Optional field for mission statement
+  vision?: string; // Optional field for vision statement
 }
 
 export interface AboutStat {
@@ -76,6 +86,14 @@ export interface AboutStat {
   label: string;
   value: string;
   icon: string;
+  color: string;
+  title: string;
+  description: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  mission?: string; // Optional field for mission statement
+  vision?: string; // Optional field for vision statement
 }
 
 export interface ContactInfo {
@@ -143,7 +161,7 @@ export const contentService = {
     api.get<Service>(`/services/${id}`),
   
   getServiceCategories: (): Promise<ApiResponse<ServiceCategory[]>> =>
-    api.get<ServiceCategory[]>('/services/categories/active'),
+    api.get<ServiceCategory[]>('/services/categories'),
 
   // Projects
   getProjects: (): Promise<ApiResponse<Project[]>> =>
@@ -155,6 +173,12 @@ export const contentService = {
   // About
   getAboutSection: (): Promise<ApiResponse<AboutSection>> =>
     api.get<AboutSection>('/about/section'),
+
+   getAboutStats: (): Promise<ApiResponse<AboutStat[]>> =>
+    api.get<AboutStat[]>('/about/stats'),
+
+    getAboutValues: (): Promise<ApiResponse<AboutStat[]>> =>
+    api.get<AboutStat[]>('/about/values'),
 
   // Contact
   getContactInfo: (): Promise<ApiResponse<ContactInfo>> =>

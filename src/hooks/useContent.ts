@@ -83,6 +83,24 @@ export const useAboutSection = () => {
   });
 };
 
+
+export const useAboutStats = () => {
+  return useQuery({
+    queryKey: ['about-stats'],
+    queryFn: contentService.getAboutStats,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
+  });
+};
+export const useAboutValues = () => {
+  return useQuery({
+    queryKey: ['about-values'],
+    queryFn: contentService.getAboutValues,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
+  });
+};
+
 // Custom hook for fetching contact info
 export const useContactInfo = () => {
   return useQuery({

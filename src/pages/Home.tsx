@@ -416,6 +416,7 @@ const Home = () => {
         </section>
 
         {/* Services Section */}
+        {servicesData && servicesData.data.length > 0 && (
         <section id="services" className="py-20 section-glass">
           <div className="container">
             <motion.div
@@ -433,7 +434,7 @@ const Home = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
+              {/* {[
                 {
                   title: "Web Development",
                   description:
@@ -521,7 +522,10 @@ const Home = () => {
                   ],
                   link: "/services#ui-ux-design",
                 },
-              ].map((service, index) => (
+              ]. */}
+
+              
+             {servicesData?.data.map((service, index) => (
                 <Link
                   to={service.link}
                   key={service.title}
@@ -617,7 +621,7 @@ const Home = () => {
               </button>
             </motion.div>
           </div>
-        </section>
+        </section>)}
 
         {/* Portfolio Section */}
         <section id="portfolio" className="py-20 section-dark">
