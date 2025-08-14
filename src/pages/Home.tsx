@@ -3,114 +3,41 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "../components/home/Carousel";
 import Testimonials from "../components/home/Testimonials";
-import { useHeroSection, useHeroStats, useServices, useProjects } from "../hooks/useContent";
+import {
+  useHeroSection,
+  useHeroStats,
+  useServices,
+  useProjects,
+} from "../hooks/useContent";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
-interface Project {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-  technologies: string[];
-}
 
-const featuredProjects: Project[] = [
-  {
-    id: "trading-management-system",
-    title: "Trading Management System",
-    category: "Financial Technology",
-    image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "A comprehensive trading platform with real-time market data, automated trading strategies, and risk management tools.",
-    technologies: [
-      "React",
-      "Node.js",
-      "WebSocket",
-      "Python",
-      "PostgreSQL",
-      "Redis",
-    ],
-  },
-  {
-    id: "hr-management-system",
-    title: "HR Management System",
-    category: "Enterprise Solutions",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "End-to-end HR management solution featuring employee onboarding, performance tracking, and payroll integration.",
-    technologies: [
-      "React",
-      "Java Spring Boot",
-      "MySQL",
-      "Docker",
-      "AWS",
-      "Microservices",
-    ],
-  },
-  {
-    id: "walletx",
-    title: "WalletX",
-    category: "FinTech",
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "Next-generation digital wallet with multi-currency support, crypto integration, and seamless payment solutions.",
-    technologies: [
-      "React Native",
-      "Node.js",
-      "MongoDB",
-      "Blockchain",
-      "Stripe",
-      "Firebase",
-    ],
-  },
-  {
-    id: "loyalty-management-system",
-    title: "Loyalty Management System",
-    category: "Customer Engagement",
-    image:
-      "https://images.unsplash.com/photo-1556742045-6e3c5d5c3c6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "Advanced loyalty program platform with points management, rewards automation, and customer analytics.",
-    technologies: [
-      "React",
-      "Python Django",
-      "PostgreSQL",
-      "Redis",
-      "AWS",
-      "Analytics",
-    ],
-  },
-  {
-    id: "agro-tech",
-    title: "Agro Tech",
-    category: "Agriculture Technology",
-    image:
-      "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-    description:
-      "Innovative agricultural management system with crop monitoring, weather forecasting, and supply chain optimization.",
-    technologies: [
-      "React",
-      "Node.js",
-      "IoT",
-      "Machine Learning",
-      "PostgreSQL",
-      "AWS",
-    ],
-  },
-];
+
 
 const Home = () => {
   const navigate = useNavigate();
-  
+
   // Fetch data from API
-  const { data: heroData, isLoading: heroLoading, error: heroError } = useHeroSection();
-  const { data: heroStats, isLoading: heroStatsLoading, error: heroStatsError } = useHeroStats();
-  const { data: servicesData, isLoading: servicesLoading, error: servicesError } = useServices();
-  const { data: projectsData, isLoading: projectsLoading, error: projectsError } = useProjects();
+  const {
+    data: heroData,
+    isLoading: heroLoading,
+    error: heroError,
+  } = useHeroSection();
+  const {
+    data: heroStats,
+    isLoading: heroStatsLoading,
+    error: heroStatsError,
+  } = useHeroStats();
+  const {
+    data: servicesData,
+    isLoading: servicesLoading,
+    error: servicesError,
+  } = useServices();
+  const {
+    data: projectsData,
+    isLoading: projectsLoading,
+    error: projectsError,
+  } = useProjects();
 
   const handleViewAllServices = () => {
     // Navigate to services page and scroll to top
@@ -118,11 +45,7 @@ const Home = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleViewPortfolio = () => {
-    // Navigate to portfolio page and scroll to top
-    navigate("/portfolio");
-    window.scrollTo(0, 0);
-  };
+ 
 
   const handleViewAbout = () => {
     // Navigate to about page and scroll to top
@@ -140,7 +63,9 @@ const Home = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading Content</h2>
+          <h2 className="text-2xl font-bold text-red-500 mb-4">
+            Error Loading Content
+          </h2>
           <p className="text-gray-600">Please try refreshing the page.</p>
         </div>
       </div>
@@ -240,7 +165,9 @@ const Home = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Expert Team</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-white">
+                      Expert Team
+                    </h3>
                     <p className="text-gray-300">
                       Our diverse team brings together years of experience
                       across various industries and technologies.
@@ -377,7 +304,9 @@ const Home = () => {
                         <div className="text-3xl font-bold text-primary-gradient mb-1">
                           25+
                         </div>
-                        <div className="text-sm text-gray-300">Team Members</div>
+                        <div className="text-sm text-gray-300">
+                          Team Members
+                        </div>
                       </motion.div>
                       <motion.div
                         className="card-glass p-4 rounded-lg shadow-md text-center"
@@ -417,24 +346,24 @@ const Home = () => {
 
         {/* Services Section */}
         {servicesData && servicesData.data.length > 0 && (
-        <section id="services" className="py-20 section-glass">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="heading-2 mb-4">Our Services</h2>
-              <p className="text-gray-300 max-w-2xl mx-auto text-justify">
-                We offer a comprehensive range of software development services
-                to help businesses thrive in the digital age.
-              </p>
-            </motion.div>
+          <section id="services" className="py-20 section-glass">
+            <div className="container">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
+              >
+                <h2 className="heading-2 mb-4">Our Services</h2>
+                <p className="text-gray-300 max-w-2xl mx-auto text-justify">
+                  We offer a comprehensive range of software development
+                  services to help businesses thrive in the digital age.
+                </p>
+              </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* {[
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* {[
                 {
                   title: "Web Development",
                   description:
@@ -524,191 +453,202 @@ const Home = () => {
                 },
               ]. */}
 
-              
-             {servicesData?.data.map((service, index) => (
-                <Link
-                  to={service.link}
-                  key={service.title}
-                  className="block"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="card-glass p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                    whileHover={{ y: -5 }}
-                  >
-                    <div
-                      className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
+                {servicesData?.data.map((service, index) => (
+                  <Link to={service.link} key={service.title} className="block">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="card-glass p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                      whileHover={{ y: -5 }}
                     >
-                      {service.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-300 mb-6 text-justify">{service.description}</p>
-
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center text-gray-300">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-primary mr-2"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
-                      Learn More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                      <div
+                        className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3 text-white">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-300 mb-6 text-justify">
+                        {service.description}
+                      </p>
 
-            {/* View All Services Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-center mt-12"
-            >
-              <button
-                onClick={handleViewAllServices}
-                className="inline-flex items-center bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+                      <ul className="space-y-2 mb-6">
+                        {service.features.map((feature, i) => (
+                          <li
+                            key={i}
+                            className="flex items-center text-gray-300"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5 text-primary mr-2"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
+                        Learn More
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </div>
+                    </motion.div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* View All Services Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center mt-12"
               >
-                View All Services
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                <button
+                  onClick={handleViewAllServices}
+                  className="inline-flex items-center bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </button>
-            </motion.div>
-          </div>
-        </section>)}
+                  View All Services
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </button>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* Portfolio Section */}
-        <section id="portfolio" className="py-20 section-dark">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                Our Products
-              </h2>
-              <p className="text-gray-300 max-w-2xl mx-auto text-justify">
-                Explore some of our recent successful projects and see how we've
-                helped businesses achieve their goals.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredProjects.map((project, index) => (
-                <Link
-                  to={`/portfolio/${project.id}`}
-                  key={project.id}
-                  className="block"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="card-glass rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-                  >
-                    <div className="relative h-48">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="text-sm text-white/90 font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-2 text-white">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-300 mb-4 text-justify">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-3 py-1 bg-slate-700/50 text-gray-300 rounded-full text-sm backdrop-blur-sm border border-slate-600/30"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="inline-block w-full text-center bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105">
-                        View Product Details
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-center mt-12"
-            >
-              <Link
-                to="/portfolio"
-                className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+        {projectsData && projectsData.data.length > 0 && (
+          <section id="portfolio" className="py-20 section-dark">
+            <div className="container mx-auto px-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
               >
-                View All Projects
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                  Our Products
+                </h2>
+                <p className="text-gray-300 max-w-2xl mx-auto text-justify">
+                  Explore some of our recent successful projects and see how
+                  we've helped businesses achieve their goals.
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projectsData?.data.map((project, index) => {
+                  const techArray = Array.isArray(project.technologies)
+                    ? project.technologies
+                    : project.technologies?.split(",") || [];
+                  return (
+                    <Link
+                      to={`/portfolio/${String(project.id)}`}
+                      key={project.id}
+                      className="block"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="card-glass rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                      >
+                        <div className="relative h-48">
+                          <img
+                            src={`${import.meta.env.VITE_API_BASE_URL_Images}/uploads/${project.image}`}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                            crossOrigin="anonymous"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          <div className="absolute bottom-4 left-4 right-4">
+                            <span className="text-sm text-white/90 font-medium">
+                              {project.category}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-semibold mb-2 text-white">
+                            {project.title}
+                          </h3>
+                          <p className="text-gray-300 mb-4 text-justify">
+                            {project.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {techArray.map((techIndex: string) => (
+                              <span
+                                key={techIndex}
+                                className="px-3 py-1 bg-slate-700/50 text-gray-300 rounded-full text-sm backdrop-blur-sm border border-slate-600/30"
+                              >
+                                {techIndex}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="inline-block w-full text-center bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105">
+                            View Product Details
+                          </div>
+                        </div>
+                      </motion.div>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center mt-12"
+              >
+                <Link
+                  to="/portfolio"
+                  className="inline-block bg-gradient-to-r from-primary to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-primary/90 hover:to-blue-600/90 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/25"
+                >
+                  View All Projects
+                </Link>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* Testimonials Section */}
         <section id="testimonials">
@@ -740,7 +680,9 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="card-glass p-8 rounded-lg shadow-md"
               >
-                <h3 className="text-xl font-semibold mb-4 text-white">Get in Touch</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white">
+                  Get in Touch
+                </h3>
                 <form className="space-y-4">
                   <div>
                     <label

@@ -3,14 +3,18 @@ import { Helmet } from "react-helmet-async";
 import {
   FaRocket,
   FaEye,
-  FaUsers,
-  FaLightbulb,
-  FaCode,
-  FaHeart,
+//  FaUsers,
+ // FaLightbulb,
+ // FaCode,
+ // FaHeart,
   FaStar,
-  FaCheckCircle,
+ // FaCheckCircle,
 } from "react-icons/fa";
-import { useAboutSection,useAboutStats,useAboutValues  } from "../hooks/useContent";
+import {
+  useAboutSection,
+  useAboutStats,
+  useAboutValues,
+} from "../hooks/useContent";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const About = () => {
@@ -21,8 +25,16 @@ const About = () => {
     error: aboutError,
   } = useAboutSection();
 
-   const { data: aboutStats, isLoading: aboutStatsLoading, error: aboutStatsError } = useAboutStats();
-   const { data: aboutValues, isLoading: aboutValuesLoading, error: aboutValuesError } = useAboutValues();
+  const {
+    data: aboutStats,
+   // isLoading: aboutStatsLoading,
+   // error: aboutStatsError,
+  } = useAboutStats();
+  const {
+    data: aboutValues,
+   // isLoading: aboutValuesLoading,
+   // error: aboutValuesError,
+  } = useAboutValues();
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -111,9 +123,24 @@ const About = () => {
               >
                 <div className="bg-slate-800/60 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 shadow-2xl">
                   <div className="aspect-square flex items-center justify-center">
-                    <div className="text-8xl font-bold text-primary-gradient">
-                      DH
-                    </div>
+                    {aboutData?.data?.image ? (
+                      <img
+                        src={
+                          aboutData.data.image
+                            ? `${import.meta.env.VITE_API_BASE_URL_Images}/uploads/${
+                                aboutData.data.image
+                              }`
+                            : "/images/placeholder.png"
+                        }
+                        alt="Digi Hub"
+                        className="w-full h-full object-cover rounded-3xl"
+                        crossOrigin="anonymous"
+                      />
+                    ) : (
+                      <div className="text-8xl font-bold text-primary-gradient">
+                        DH
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -154,7 +181,7 @@ const About = () => {
         </section>
 
         {/* Mission & Vision */}
-       
+
         <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 overflow-hidden">
           {/* Background effects */}
           <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
@@ -192,7 +219,8 @@ const About = () => {
                     </h3>
                   </div>
                   <p className="text-gray-200 leading-relaxed text-base text-justify">
-                   {aboutData?.data?.mission ||' At Digi Hub, our mission is to empower businesses and individuals by delivering cutting-edge technology solutions                    that boost efficiency, transparency, and accessibilityacross various industries. We are dedicated to buildingseamless, secure and reliable platforms that foster growthand profitability, enabling our clients to reach their  fullest potential in a rapidly changing digital world.'}
+                    {aboutData?.data?.mission ||
+                      " At Digi Hub, our mission is to empower businesses and individuals by delivering cutting-edge technology solutions                    that boost efficiency, transparency, and accessibilityacross various industries. We are dedicated to buildingseamless, secure and reliable platforms that foster growthand profitability, enabling our clients to reach their  fullest potential in a rapidly changing digital world."}
                   </p>
                 </div>
               </motion.div>
@@ -212,14 +240,14 @@ const About = () => {
                     </h3>
                   </div>
                   <p className="text-gray-200 leading-relaxed text-base text-justify">
-                     {aboutData?.data?.vision ||'Our vision is to become a global leader in technology-driven solutions, revolutionizing industries and setting new benchmarks for excellence in capital markets, fintech, and beyond. We aim to consistently innovate, broaden our offerings, and provide exceptional value to our clients, while maintaining the highest standards of quality and customer satisfaction.'}
+                    {aboutData?.data?.vision ||
+                      "Our vision is to become a global leader in technology-driven solutions, revolutionizing industries and setting new benchmarks for excellence in capital markets, fintech, and beyond. We aim to consistently innovate, broaden our offerings, and provide exceptional value to our clients, while maintaining the highest standards of quality and customer satisfaction."}
                   </p>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
-        
 
         {/* Stats Section */}
         {aboutStats?.data && aboutStats.data.length > 0 && (
@@ -268,55 +296,54 @@ const About = () => {
         )}
 
         {/* Values */}
-         {aboutValues?.data && aboutValues.data.length > 0 && (
-        <section className="relative py-20 bg-gradient-to-br from-slate-900 via-purple-900/10 to-slate-900 overflow-hidden">
-          {/* Background effects */}
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-300"></div>
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        {aboutValues?.data && aboutValues.data.length > 0 && (
+          <section className="relative py-20 bg-gradient-to-br from-slate-900 via-purple-900/10 to-slate-900 overflow-hidden">
+            {/* Background effects */}
+            <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-300"></div>
+            <div className="absolute bottom-20 right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700"></div>
 
-          <div className="container relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="heading-2 mb-6">Our Core Values</h2>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto text-center">
-                The principles that guide everything we do
-              </p>
-            </motion.div>
+            <div className="container relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2 className="heading-2 mb-6">Our Core Values</h2>
+                <p className="text-xl text-gray-200 max-w-3xl mx-auto text-center">
+                  The principles that guide everything we do
+                </p>
+              </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {aboutValues?.data.map((value, index) => (
-             
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl text-center hover:scale-105 transition-transform duration-300 relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-primary/25 transition-shadow duration-300">
-                     {value.icon}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {aboutValues?.data.map((value, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl text-center hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                  >
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-primary/25 transition-shadow duration-300">
+                        {value.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-4">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-200 text-base leading-relaxed text-justify">
+                        {value.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-semibold text-white mb-4">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-200 text-base leading-relaxed text-justify">
-                      {value.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )}
       </div>
     </>
   );

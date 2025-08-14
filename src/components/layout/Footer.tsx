@@ -249,9 +249,14 @@ const Footer = () => {
               transition={{ duration: 0.3 }}
               viewport={{ once: true }}
             >
-              <img src="/images/Dghub-svg-logo.svg" alt="Digi Hub Logo" className="h-8 w-auto mb-2" />
+              <img
+                src={footerData?.data?.logo || "/images/Dghub-svg-logo.svg"}
+                alt={footerData?.data?.companyName || "Digi Hub Logo"}
+                className="h-8 w-auto mb-2"
+              />
               <p className="text-gray-300 mb-2 text-sm">
-                {footerData?.data?.description || "Transforming ideas into innovative digital solutions."}
+                {footerData?.data?.description ||
+                  "Transforming ideas into innovative digital solutions."}
               </p>
               <div className="flex space-x-3">
                 <SocialIcon
@@ -288,8 +293,8 @@ const Footer = () => {
                 )) || (
                   <>
                     <FooterLink to="/about">About Us</FooterLink>
-                    <FooterLink to="/services">Services</FooterLink>
-                    <FooterLink to="/portfolio">Portfolio</FooterLink>
+                    <FooterLink to="/services">Our Services</FooterLink>
+                    <FooterLink to="/portfolio">Our Products</FooterLink>
                     <FooterLink to="/contact">Contact</FooterLink>
                   </>
                 )}
@@ -306,7 +311,8 @@ const Footer = () => {
               <h4 className="text-base font-semibold mb-2">Contact</h4>
               <ul className="space-y-1">
                 <ContactItem icon={FaMapMarkerAlt}>
-                  {contactData?.data?.address || "Kalash Building, Naxal, Bhatbhateni, Kathmandu, Nepal"}
+                  {contactData?.data?.address ||
+                    "Kalash Building, Naxal, Bhatbhateni, Kathmandu, Nepal"}
                 </ContactItem>
                 <ContactItem icon={FaEnvelope}>
                   {contactData?.data?.email || "info@digihub.io"}
@@ -326,7 +332,11 @@ const Footer = () => {
             viewport={{ once: true }}
             className="mt-6 pt-4 border-t border-gray-800 text-center text-gray-400 text-xs"
           >
-            <p>&copy; {currentYear} Digi Hub. All rights reserved.</p>
+            <p>
+              &copy; {currentYear}{" "}
+              {footerData?.data?.copyrightText ||
+                "Digi Hub. All rights reserved."}
+            </p>
           </motion.div>
         </div>
       </footer>

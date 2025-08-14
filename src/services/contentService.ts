@@ -60,12 +60,18 @@ export interface Project {
   image: string;
   client: string;
   category: string;
-  technologies: string[];
+  technologies?:string;
   projectUrl: string;
   githubUrl: string;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  features: string;
+  advantages: string;
+  gallery: string;
+  results: string;
+  testimonials: string | string[];
+  
 }
 
 export interface AboutSection {
@@ -125,6 +131,11 @@ export interface FooterInfo {
   description: string;
   links: FooterLink[];
   isActive: boolean;
+  logo: string;
+  companyName: string;
+  createdAt: string;
+  updatedAt: string;
+  copyrightText: string;
 }
 
 export interface FooterLink {
@@ -139,6 +150,8 @@ export interface DemoVideo {
   title: string;
   description: string;
   videoUrl: string;
+  youtubeUrl: string;
+  duration: string;
   thumbnail: string;
   isActive: boolean;
 }
@@ -194,7 +207,7 @@ export const contentService = {
 
   // Demo Videos
   getDemoVideos: (): Promise<ApiResponse<DemoVideo[]>> =>
-    api.get<DemoVideo[]>('/demo-videos/section'),
+    api.get<DemoVideo[]>('/demo-videos'),
 };
 
 export default contentService; 

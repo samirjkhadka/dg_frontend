@@ -79,7 +79,7 @@ const Header = () => {
   const { handleNavClick, isActive } = useNavigation();
   
   // Fetch navigation data from API
-  const { data: navigationData, isLoading: navigationLoading } = useNavigationData();
+  const { data: navigationData } = useNavigationData();
   
   const { activeSection } = useScrollSection([
     "home",

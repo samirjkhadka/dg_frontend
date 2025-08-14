@@ -1,14 +1,14 @@
-import { useState, useEffect, createElement } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
   FaRocket,
-  FaCode,
-  FaMobile,
-  FaDesktop,
-  FaDatabase,
-  FaCloud,
+  // FaCode,
+  // FaMobile,
+  // FaDesktop,
+  // FaDatabase,
+  // FaCloud,
 } from "react-icons/fa";
 import { useServices, useServiceCategories } from "../hooks/useContent";
 import LoadingSpinner from "../components/common/LoadingSpinner";
@@ -269,8 +269,8 @@ const Services = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {categoryServices.map((service, index) => (
                       <Link
-                        // to={`/services/${service.id}`}
-                        to={service.link}
+                         to={`/services/${service.id}`}
+                        //to={service.link}
                         key={service.id}
                         className="block"
                       >
