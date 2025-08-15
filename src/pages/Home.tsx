@@ -8,6 +8,7 @@ import {
   useHeroStats,
   useServices,
   useProjects,
+  useContactInfo
 } from "../hooks/useContent";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
@@ -38,6 +39,11 @@ const Home = () => {
     isLoading: projectsLoading,
     error: projectsError,
   } = useProjects();
+    const {
+    data: contactData,
+    isLoading: contactLoading,
+    error: contactError,
+  } = useContactInfo();
 
   const handleViewAllServices = () => {
     // Navigate to services page and scroll to top
@@ -45,7 +51,6 @@ const Home = () => {
     window.scrollTo(0, 0);
   };
 
- 
 
   const handleViewAbout = () => {
     // Navigate to about page and scroll to top
@@ -464,7 +469,7 @@ const Home = () => {
                       whileHover={{ y: -5 }}
                     >
                       <div
-                        className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-14 h-14 ${service.color}text-2xl rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
                       >
                         {service.icon}
                       </div>
@@ -656,6 +661,7 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
+        {contactData && (
         <section id="contact" className="py-20 section-glass">
           <div className="container mx-auto px-4">
             <motion.div
@@ -745,13 +751,15 @@ const Home = () => {
                 <h3 className="text-xl font-semibold mb-4 text-white">
                   Contact Information
                 </h3>
+                        { contactData.data && (
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="text-primary mr-4 text-xl">📍</div>
                     <div>
                       <h4 className="font-medium text-white">Address</h4>
                       <p className="text-gray-300">
-                        Kalash Building, Bhatbhateni, Naxal, <br /> Kathmandu
+                        {contactData.data.address}
+                       
                       </p>
                     </div>
                   </div>
@@ -759,14 +767,14 @@ const Home = () => {
                     <div className="text-primary mr-4 text-xl">📧</div>
                     <div>
                       <h4 className="font-medium text-white">Email</h4>
-                      <p className="text-gray-300">info@digihub.com</p>
+                      <p className="text-gray-300"> {contactData.data.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <div className="text-primary mr-4 text-xl">📱</div>
                     <div>
                       <h4 className="font-medium text-white">Phone</h4>
-                      <p className="text-gray-300">+977 01 4333333</p>
+                      <p className="text-gray-300"> {contactData.data.phone}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -774,12 +782,12 @@ const Home = () => {
                     <div>
                       <h4 className="font-medium text-white">Business Hours</h4>
                       <p className="text-gray-300 text-justify">
-                        Sunday - Thursday: 9:00 AM - 6:00 PM <br />
-                        Friday: 9:30 AM - 1:30 PM
+                         {contactData.data.officeHours}
                       </p>
                     </div>
                   </div>
                 </div>
+              )}
               </motion.div>
             </div>
 
@@ -793,7 +801,7 @@ const Home = () => {
             </motion.div>
           </div>
         </section>
-
+        )}
         {/* CTA Section */}
         <section className="py-20 section-dark">
           <div className="container">

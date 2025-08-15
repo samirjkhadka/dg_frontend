@@ -3,12 +3,12 @@ import { Helmet } from "react-helmet-async";
 import {
   FaRocket,
   FaEye,
-//  FaUsers,
- // FaLightbulb,
- // FaCode,
- // FaHeart,
+  //  FaUsers,
+  // FaLightbulb,
+  // FaCode,
+  // FaHeart,
   FaStar,
- // FaCheckCircle,
+  // FaCheckCircle,
 } from "react-icons/fa";
 import {
   useAboutSection,
@@ -27,13 +27,13 @@ const About = () => {
 
   const {
     data: aboutStats,
-   // isLoading: aboutStatsLoading,
-   // error: aboutStatsError,
+    // isLoading: aboutStatsLoading,
+    // error: aboutStatsError,
   } = useAboutStats();
   const {
     data: aboutValues,
-   // isLoading: aboutValuesLoading,
-   // error: aboutValuesError,
+    // isLoading: aboutValuesLoading,
+    // error: aboutValuesError,
   } = useAboutValues();
 
   const fadeInUp = {
@@ -127,9 +127,9 @@ const About = () => {
                       <img
                         src={
                           aboutData.data.image
-                            ? `${import.meta.env.VITE_API_BASE_URL_Images}/uploads/${
-                                aboutData.data.image
-                              }`
+                            ? `${
+                                import.meta.env.VITE_API_BASE_URL_Images
+                              }/uploads/${aboutData.data.image}`
                             : "/images/placeholder.png"
                         }
                         alt="Digi Hub"
@@ -281,11 +281,12 @@ const About = () => {
                     className="text-center"
                   >
                     <div className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300">
-                      <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 mb-4">
-                        {stat.value}
+                      <div className="text-4xl font-bold t bg-clip-text bg-gradient-to-r from-primary to-blue-400 mb-4">
+                        {stat.icon} {stat.value}
                       </div>
+                    
                       <div className="text-lg text-gray-300 font-medium">
-                        {stat.label}
+                        {stat.title}
                       </div>
                     </div>
                   </motion.div>

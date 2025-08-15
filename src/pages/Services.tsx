@@ -214,7 +214,7 @@ const Services = () => {
                     >
                       {renderIcon(category.icon, "text-lg")}
                       {/* <Icon className="text-lg" /> */}
-                      <span>{category.name}</span>
+                      <span>{category.title}</span>
                     </motion.button>
                   );
                 })}

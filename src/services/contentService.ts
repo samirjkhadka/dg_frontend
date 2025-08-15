@@ -37,6 +37,10 @@ export interface Service {
   route?: string; // Optional route for navigation
   categoryId: number;
   category: ServiceCategory;
+  categoryTitle: string; // Title of the service category
+  categoryIcon: string; // Icon of the service category
+  categoryDescription: string; // Description of the service category
+  categoryImage: string; // Image of the service category
   features: string[];
   isActive: boolean;
   createdAt: string;
@@ -108,6 +112,7 @@ export interface ContactInfo {
   phone: string;
   email: string;
   socialLinks: SocialLink[];
+  officeHours: string;
   isActive: boolean;
 }
 
