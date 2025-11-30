@@ -1,8 +1,5 @@
 // src/components/home/WhyChoose.tsx
 import { motion } from "framer-motion";
-import { iconMap } from "@/lib/icons";
-
-const { CheckCircle } = iconMap;
 
 const benefits = [
   {
