@@ -51,32 +51,32 @@ export const mockClients: Client[] = [
     logo: "/images/clients/machhapuchhre.png",
     width: 150,
   },
-  { name: "Kumari Bank", logo: "/images/clients/kumari.png", width: 130 },
-  { name: "Sanima Bank", logo: "/images/clients/sanima.png", width: 140 },
-  {
-    name: "Century Commercial Bank",
-    logo: "/images/clients/century.png",
-    width: 160,
-  },
-  {
-    name: "Mega Bank Nepal",
-    logo: "/images/clients/mega-bank.png",
-    width: 140,
-  },
-  {
-    name: "Agricultural Development Bank",
-    logo: "/images/clients/adbl.png",
-    width: 170,
-  },
-  { name: "Nepal Bank Limited", logo: "/images/clients/nbl.png", width: 140 },
-  {
-    name: "Rastriya Banijya Bank",
-    logo: "/images/clients/rbb.png",
-    width: 150,
-  },
-  {
-    name: "Citizens Bank International",
-    logo: "/images/clients/citizens.png",
-    width: 160,
-  },
+  // { name: "Kumari Bank", logo: "/images/clients/kumari.png", width: 130 },
+  // { name: "Sanima Bank", logo: "/images/clients/sanima.png", width: 140 },
+  // {
+  //   name: "Century Commercial Bank",
+  //   logo: "/images/clients/century.png",
+  //   width: 160,
+  // },
+  // {
+  //   name: "Mega Bank Nepal",
+  //   logo: "/images/clients/mega-bank.png",
+  //   width: 140,
+  // },
+  // {
+  //   name: "Agricultural Development Bank",
+  //   logo: "/images/clients/adbl.png",
+  //   width: 170,
+  // },
+  // { name: "Nepal Bank Limited", logo: "/images/clients/nbl.png", width: 140 },
+  // {
+  //   name: "Rastriya Banijya Bank",
+  //   logo: "/images/clients/rbb.png",
+  //   width: 150,
+  // },
+  // {
+  //   name: "Citizens Bank International",
+  //   logo: "/images/clients/citizens.png",
+  //   width: 160,
+  // },
 ];

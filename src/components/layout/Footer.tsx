@@ -1,347 +1,268 @@
-import { memo, useMemo, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-  FaArrowUp,
-} from "react-icons/fa";
+// src/components/Footer.tsx
 import { motion, AnimatePresence } from "framer-motion";
-import { useFooterInfo, useContactInfo } from "../../hooks/useContent";
+import { Link } from "react-router-dom";
+import { useState, useEffect, memo } from "react";
+import { iconMap } from "@/lib/icons";
+import { mockContactInfo } from "@/data/mockContactData";
 
-// Memoized social icon component with enhanced animations
-const SocialIcon = memo(
-  ({
-    href,
-    icon: Icon,
-    label,
-  }: {
-    href: string;
-    icon: React.ElementType;
-    label: string;
-  }) => (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-300 hover:text-white transition-colors"
-      aria-label={label}
-      whileHover={{ scale: 1.2, rotate: 5 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+// Safe destructuring — only icons we KNOW exist
+const { ArrowUp, Mail, Phone, MapPin, Copyright } = iconMap;
+
+// Fallback icons if social ones are missing (prevents crash)
+const fallbackIcons: Record<string, React.FC<any>> = {
+  LinkedIn: () => (
+    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+    </svg>
+  ),
+  Facebook: () => (
+    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.648c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.925-1.956 1.874v2.255h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.864 10.125-11.854z" />
+    </svg>
+  ),
+  Twitter: () => (
+    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  ),
+};
+
+const FooterLink = ({
+  to,
+  children,
+}: {
+  to: string;
+  children: React.ReactNode;
+}) => (
+  <motion.li
+    whileHover={{ x: 6 }}
+    transition={{ type: "spring", stiffness: 400 }}
+  >
+    <Link
+      to={to}
+      className="text-gray-400 hover:text-white transition-colors text-sm font-medium"
     >
-      <Icon size={20} />
-    </motion.a>
-  )
+      {children}
+    </Link>
+  </motion.li>
 );
 
-SocialIcon.displayName = "SocialIcon";
+const ScrollToTopButton = () => {
+  const [visible, setVisible] = useState(false);
 
-// Memoized footer link component with enhanced animations
-const FooterLink = memo(
-  ({ to, children }: { to: string; children: React.ReactNode }) => (
-    <motion.li
-      whileHover={{ x: 5 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-    >
-      <Link
-        to={to}
-        className="text-gray-300 hover:text-white transition-colors text-sm"
-      >
-        {children}
-      </Link>
-    </motion.li>
-  )
-);
-
-FooterLink.displayName = "FooterLink";
-
-// Contact info item component with icon
-const ContactItem = memo(
-  ({
-    icon: Icon,
-    children,
-  }: {
-    icon: React.ElementType;
-    children: React.ReactNode;
-  }) => (
-    <motion.li
-      className="flex items-center space-x-2 text-gray-300 text-sm"
-      whileHover={{ x: 5 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-    >
-      <Icon className="text-primary" size={14} />
-      <span>{children}</span>
-    </motion.li>
-  )
-);
-
-ContactItem.displayName = "ContactItem";
-
-// Scroll to top button component
-const ScrollToTopButton = memo(() => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Show button when page is scrolled up to given distance
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
-  // Set the scroll event listener
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-    };
+    const toggle = () => setVisible(window.scrollY > 500);
+    window.addEventListener("scroll", toggle);
+    return () => window.removeEventListener("scroll", toggle);
   }, []);
 
-  // Scroll to top smoothly
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  const scrollUp = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {visible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              type: "spring",
-              stiffness: 300,
-              damping: 20,
-            },
-          }}
-          exit={{
-            opacity: 0,
-            scale: 0.5,
-            y: 20,
-            transition: {
-              duration: 0.2,
-            },
-          }}
-          whileHover={{
-            scale: 1.1,
-            boxShadow:
-              "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-            transition: {
-              type: "spring",
-              stiffness: 400,
-              damping: 10,
-            },
-          }}
+          initial={{ opacity: 0, scale: 0.6, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 20 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg z-50 max-w-[90vw]"
-          aria-label="Scroll to top"
+          onClick={scrollUp}
+          className="fixed bottom-8 right-8 bg-[#084097] text-white p-4 rounded-full shadow-2xl z-50 border border-white/20 backdrop-blur-sm"
+          aria-label="Back to top"
         >
-          <motion.div
-            animate={{
-              y: [0, -3, 0],
-              transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              },
-            }}
-          >
-            <FaArrowUp size={20} />
-          </motion.div>
+          <ArrowUp className="w-6 h-6" />
         </motion.button>
       )}
     </AnimatePresence>
   );
-});
+};
 
-ScrollToTopButton.displayName = "ScrollToTopButton";
-
-// Custom scrollbar styles
-const ScrollbarStyles = memo(() => {
-  useEffect(() => {
-    // Add custom scrollbar styles
-    const style = document.createElement("style");
-    style.innerHTML = `
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      ::-webkit-scrollbar {
-        width: 0px;
-        height: 0px;
-      }
-      
-      /* Hide scrollbar for IE, Edge and Firefox */
-      * {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-      }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  return null;
-});
-
-ScrollbarStyles.displayName = "ScrollbarStyles";
-
-// Scroll progress indicator component
-const ScrollProgressIndicator = memo(() => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+const ScrollProgress = () => {
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.pageYOffset / totalHeight) * 100;
-      setScrollProgress(progress);
+    const update = () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      setProgress(height > 0 ? (winScroll / height) * 100 : 0);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", update);
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
     <motion.div
-      className="fixed top-0 left-0 h-1 bg-primary z-50"
-      style={{ width: `${scrollProgress}%` }}
-      initial={{ width: 0 }}
-      animate={{ width: `${scrollProgress}%` }}
-      transition={{ type: "spring", stiffness: 100, damping: 30 }}
+      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#084097] to-cyan-500 z-50"
+      style={{ width: `${progress}%` }}
     />
   );
-});
-
-ScrollProgressIndicator.displayName = "ScrollProgressIndicator";
+};
 
 const Footer = () => {
-  // Fetch footer and contact data from API
-  const { data: footerData } = useFooterInfo();
-  const { data: contactData } = useContactInfo();
-  const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const year = new Date().getFullYear();
+
+  const quickLinks = [
+    { to: "/about", label: "About Us" },
+    { to: "/services", label: "Services" },
+    { to: "/portfolio", label: "Portfolio" },
+    { to: "/contact", label: "Contact" },
+  ];
+
+  const socials = mockContactInfo.socialLinks;
 
   return (
     <>
-      <ScrollbarStyles />
-      <ScrollProgressIndicator />
-      <footer className="bg-dark text-white py-6">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Company Info */}
+      <ScrollProgress />
+
+      <footer className="relative bg-gradient-to-t from-black via-slate-950 to-slate-900 text-white pt-24 pb-12 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#084097]/20 via-transparent to-transparent" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            {/* Brand */}
             <motion.div
-              className="col-span-1"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              viewport={{ once: true }}
+              className="space-y-6"
             >
-              <img
-                src={footerData?.data?.logo || "/images/Dghub-svg-logo.svg"}
-                alt={footerData?.data?.companyName || "Digi Hub Logo"}
-                className="h-8 w-auto mb-2"
-              />
-              <p className="text-gray-300 mb-2 text-sm">
-                {footerData?.data?.description ||
-                  "Transforming ideas into innovative digital solutions."}
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#084097] to-cyan-600 rounded-xl flex items-center justify-center font-black text-white text-2xl">
+                  DH
+                </div>
+                <span className="text-2xl font-black">Digi Hub</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+                Nepal’s leading technology partner for capital markets. Building
+                secure, high-performance trading systems trusted by top brokers.
               </p>
-              <div className="flex space-x-3">
-                <SocialIcon
-                  href="https://github.com"
-                  icon={FaGithub}
-                  label="GitHub"
-                />
-                <SocialIcon
-                  href="https://linkedin.com"
-                  icon={FaLinkedin}
-                  label="LinkedIn"
-                />
-                <SocialIcon
-                  href="https://twitter.com"
-                  icon={FaTwitter}
-                  label="Twitter"
-                />
+
+              {/* Social Icons — Now 100% safe */}
+              <div className="flex gap-4">
+                {socials.map((social) => {
+                  const IconFromMap =
+                    iconMap[social.icon as keyof typeof iconMap];
+                  const Icon =
+                    IconFromMap ||
+                    fallbackIcons[social.name] ||
+                    fallbackIcons.Twitter;
+
+                  return (
+                    <motion.a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-[#084097] transition-all hover:scale-110"
+                      whileHover={{ y: -4 }}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </motion.a>
+                  );
+                })}
               </div>
             </motion.div>
 
             {/* Quick Links */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
             >
-              <h4 className="text-base font-semibold mb-2">Quick Links</h4>
-              <ul className="space-y-1">
-                {footerData?.data?.links?.map((link) => (
-                  <FooterLink key={link.id} to={link.url}>
-                    {link.title}
+              <h3 className="text-lg font-bold mb-6 text-cyan-400">
+                Quick Links
+              </h3>
+              <ul className="space-y-4">
+                {quickLinks.map((link) => (
+                  <FooterLink key={link.to} to={link.to}>
+                    {link.label}
                   </FooterLink>
-                )) || (
-                  <>
-                    <FooterLink to="/about">About Us</FooterLink>
-                    <FooterLink to="/services">Our Services</FooterLink>
-                    <FooterLink to="/portfolio">Our Products</FooterLink>
-                    <FooterLink to="/contact">Contact</FooterLink>
-                  </>
-                )}
+                ))}
               </ul>
             </motion.div>
 
-            {/* Contact Info */}
+            {/* Services */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
             >
-              <h4 className="text-base font-semibold mb-2">Contact</h4>
-              <ul className="space-y-1">
-                <ContactItem icon={FaMapMarkerAlt}>
-                  {contactData?.data?.address ||
-                    "Kalash Building, Naxal, Bhatbhateni, Kathmandu, Nepal"}
-                </ContactItem>
-                <ContactItem icon={FaEnvelope}>
-                  {contactData?.data?.email || "info@digihub.io"}
-                </ContactItem>
-                <ContactItem icon={FaPhone}>
-                  {contactData?.data?.phone || "+977 01 4333333"}
-                </ContactItem>
+              <h3 className="text-lg font-bold mb-6 text-cyan-400">
+                Our Services
+              </h3>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <FooterLink to="/services#category-1">
+                  Trading Platforms
+                </FooterLink>
+                <FooterLink to="/services#category-2">
+                  Risk & Compliance
+                </FooterLink>
+                <FooterLink to="/services#category-3">Market Data</FooterLink>
+                <FooterLink to="/services#category-4">Mobile Apps</FooterLink>
               </ul>
+            </motion.div>
+
+            {/* Contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="space-y-6"
+            >
+              <h3 className="text-lg font-bold mb-6 text-cyan-400">
+                Get in Touch
+              </h3>
+              <div className="space-y-5 text-sm">
+                <div className="flex gap-4">
+                  <MapPin className="w-5 h-5 text-[#084097]" />
+                  <p className="text-gray-400">{mockContactInfo.address}</p>
+                </div>
+                <div className="flex gap-4">
+                  <Phone className="w-5 h-5 text-[#084097]" />
+                  <a
+                    href={`tel:${mockContactInfo.phone.replace(/\s/g, "")}`}
+                    className="hover:text-white transition"
+                  >
+                    {mockContactInfo.phone}
+                  </a>
+                </div>
+                <div className="flex gap-4">
+                  <Mail className="w-5 h-5 text-[#084097]" />
+                  <a
+                    href={`mailto:${mockContactInfo.email}`}
+                    className="hover:text-white transition"
+                  >
+                    {mockContactInfo.email}
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
 
-          {/* Copyright */}
+          {/* Bottom Bar */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-6 pt-4 border-t border-gray-800 text-center text-gray-400 text-xs"
+            className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500"
           >
-            <p>
-              &copy; {currentYear}{" "}
-              {footerData?.data?.copyrightText ||
-                "Digi Hub. All rights reserved."}
-            </p>
+            <div className="flex items-center gap-2">
+              <Copyright className="w-4 h-4" />
+              <span>{year} Digi Hub. All rights reserved.</span>
+            </div>
+            <div className="flex gap-6">
+              <Link to="/privacy" className="hover:text-white transition">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="hover:text-white transition">
+                Terms of Service
+              </Link>
+            </div>
           </motion.div>
         </div>
       </footer>
 
-      {/* Scroll to top button */}
       <ScrollToTopButton />
     </>
   );
