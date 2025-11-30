@@ -122,7 +122,7 @@ const Footer = () => {
                 <img
                   src="/images/Dghub-svg-logo.svg"
                   alt="DigiHub"
-                  className="h-25 w-25 relative rounded-full z-10 "
+                  className="h-[3.5rem] w-[8.5rem] relative rounded-full z-10 "
                 />
                 {/* </div> */}
                 {/* <span className="text-2xl font-black text-gray-900 dark:text-white">

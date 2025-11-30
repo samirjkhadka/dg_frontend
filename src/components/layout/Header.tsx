@@ -93,17 +93,17 @@ export default function Header() {
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             {/* LOGO */}
-            <Link to="/" className="flex items-center space-x-4 group">
-              <div className="relative">
-                <div className="absolute inset-0  rounded-full scale-110 opacity-70 group-hover:opacity-100 transition" />
-                {/* <div className="relative p-2 bg-white dark:bg-black rounded-full shadow-2xl"> */}
-                  <img
-                    src="/images/Dghub-svg-logo.svg"
-                    alt="DigiHub"
-                    className="h-25 w-25 relative rounded-full z-10 "
-                  />
-                {/* </div> */}
-              </div>
+            <Link to="/" className="flex items-center space-x-3 group">
+              {/* <div className="relative">
+                <div className="absolute inset-0 bg-[#084097] rounded-full blur-xl scale-125 opacity-60 group-hover:opacity-90 group-hover:scale-150 transition-all duration-500" />
+                <div className="relative p-3 bg-white dark:bg-black rounded-full shadow-2xl ring-4 ring-white/20 dark:ring-black/50"> */}
+              <img
+                src="/images/Dghub-svg-logo.svg"
+                alt="DigiHub"
+                className="h-[3.5rem] w-[8.5rem] object-contain relative z-10 transition-transform duration-300 group-hover:scale-110"
+              />
+              {/* </div> */}
+              {/* </div> */}
               {/* <span className="text-2xl font-black tracking-tight">
                 <span className="text-[#084097] dark:text-white">DIGIHUB</span>
               </span> */}
