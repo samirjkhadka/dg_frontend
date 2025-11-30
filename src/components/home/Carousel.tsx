@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function HeroSection({ heroData }: any) {
+export default function HeroSection({}: any) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-slate-950">
       {/* Dynamic Background */}
