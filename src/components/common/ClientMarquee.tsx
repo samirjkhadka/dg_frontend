@@ -20,7 +20,7 @@ const ClientMarquee = () => {
         </div>
 
         {/* First Row - Left to Right */}
-        <div className="relative">
+        {/* <div className="relative">
           <motion.div
             className="flex gap-16 items-center py-8"
             initial={{ x: 0 }}
@@ -56,7 +56,7 @@ const ClientMarquee = () => {
               </div>
             ))}
           </motion.div>
-        </div>
+        </div> */}
 
         {/* Second Row - Right to Left (slower, reverse) */}
         <div className="relative mt-12">
@@ -65,7 +65,7 @@ const ClientMarquee = () => {
             initial={{ x: "-50%" }}
             animate={{ x: 0 }}
             transition={{
-              duration: 100,
+              duration: 50,
               ease: "linear",
               repeat: Infinity,
             }}
