@@ -9,6 +9,8 @@ import ClientMarquee from "@/components/common/ClientMarquee";
 import { mockService } from "@/data/mockServicesData";
 import { iconMap } from "@/lib/icons";
 import { mockProject } from "@/data/mockPortfolioData";
+import WhyChoose from "@/components/home/WhyChoose";
+import Features from "@/components/home/Features";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -45,7 +47,7 @@ const Home = () => {
 
         <ClientMarquee />
 
-        {/* UPDATED ABOUT SECTION — NOW ELITE */}
+        {/* UPDATED ABOUT SECTION  */}
         <section
           id="about"
           className="py-24 md:py-32 bg-white dark:bg-slate-900/30"
@@ -58,7 +60,7 @@ const Home = () => {
               className="text-center mb-20"
             >
               <h2 className="text-5xl md:text-7xl font-black mb-8">
-                About <span className="text-[#084097]">Digi Hub</span>
+                About <span className="text-[#084097]">DigiHub</span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-5xl mx-auto leading-relaxed">
                 We are Nepal’s leading technology partner for capital markets —
@@ -163,7 +165,10 @@ const Home = () => {
             </div>
           </div>
         </section>
-        {/* UPDATED SERVICES SECTION — NOW PREMIUM & CONSISTENT */}
+
+        <WhyChoose />
+
+        {/* UPDATED SERVICES SECTION  */}
         <section
           id="services"
           className="py-24 md:py-32 bg-gray-50 dark:bg-slate-950"
@@ -189,17 +194,30 @@ const Home = () => {
                 const ServiceIcon =
                   iconMap[service.icon as keyof typeof iconMap] ||
                   iconMap.Laptop;
+
                 return (
-                  <Link
-                    to={`/services#category-${service.categoryId}`}
+                  <div
                     key={service.id}
+                    onClick={() => {
+                      navigate("/services");
+                      setTimeout(() => {
+                        const element = document.getElementById(
+                          `category-${service.categoryId}`
+                        );
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                          window.scrollBy(0, -120); // Adjust for sticky header
+                        }
+                      }, 150);
+                    }}
+                    className="cursor-pointer"
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.15 }}
                       viewport={{ once: true }}
-                      className="group bg-white dark:bg-white/5 backdrop-blur-sm rounded-3xl p-10 border border-gray-200 dark:border-white/10 hover:border-[#084097] dark:hover:border-cyan-500 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-4 cursor-pointer"
+                      className="group bg-white dark:bg-white/5 backdrop-blur-sm rounded-3xl p-10 border border-gray-200 dark:border-white/10 hover:border-[#084097] dark:hover:border-cyan-500 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-4"
                       whileHover={{ y: -12 }}
                     >
                       <div className="w-20 h-20 bg-gradient-to-br from-[#084097] to-cyan-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition shadow-xl">
@@ -216,7 +234,7 @@ const Home = () => {
                         <iconMap.ArrowRight className="w-5 h-5" />
                       </div>
                     </motion.div>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
@@ -233,6 +251,7 @@ const Home = () => {
           </div>
         </section>
 
+        <Features />
         {/* PORTFOLIO SECTION — HOME PAGE */}
         <section
           id="portfolio"

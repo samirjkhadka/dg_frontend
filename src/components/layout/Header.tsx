@@ -1,13 +1,13 @@
 // src/components/layout/Header.tsx
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
+  { name: "Products", href: "/portfolio" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -20,6 +20,11 @@ export default function Header() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState<string>("home");
+
+  // Theme toggle
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add("dark");
@@ -30,18 +35,67 @@ export default function Header() {
     }
   }, [isDark]);
 
+  // Active section detection on scroll (only on Home page)
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const sections = ["home", "about", "services", "portfolio", "contact"];
+    const handleScroll = () => {
+      let current = "home";
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150) {
+            current = section;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+
+  // Smart navigation handler
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: (typeof navItems)[0]
+  ) => {
+    e.preventDefault();
+
+    const isHomePage = location.pathname === "/";
+    const sectionId = item.name.toLowerCase();
+
+    if (
+      isHomePage &&
+      ["about", "services", "portfolio", "contact"].includes(item.name)
+    ) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(sectionId);
+        setIsOpen(false);
+      }
+    } else {
+      navigate(item.href);
+      if (item.name === "Home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Navbar — adapts perfectly to dark & light */}
       <nav className="bg-white/90 dark:bg-black/90 backdrop-blur-xl border-b border-gray-200 dark:border-white/10">
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            {/* LOGO — ALWAYS VISIBLE */}
+            {/* LOGO */}
             <Link to="/" className="flex items-center space-x-4 group">
               <div className="relative">
-                {/* Glow ring */}
                 <div className="absolute inset-0 bg-[#084097] blur-xl rounded-full scale-110 opacity-70 group-hover:opacity-100 transition" />
-                {/* Logo with white background in light mode */}
                 <div className="relative p-2 bg-white dark:bg-black rounded-full shadow-2xl">
                   <img
                     src="/images/Dghub-svg-logo.svg"
@@ -57,15 +111,44 @@ export default function Header() {
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-10">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-[#084097] dark:hover:text-cyan-400 font-medium transition"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const sectionId = item.name.toLowerCase();
+                const isActive =
+                  (location.pathname === "/" && activeSection === sectionId) ||
+                  (location.pathname === item.href && item.name !== "Home");
+
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={(e) => handleNavClick(e, item)}
+                    className="relative font-medium transition-all duration-300"
+                  >
+                    <span
+                      className={`${
+                        isActive
+                          ? "text-[#084097] dark:text-cyan-400"
+                          : "text-gray-700 dark:text-gray-300 hover:text-[#084097] dark:hover:text-cyan-400"
+                      }`}
+                    >
+                      {item.name}
+                    </span>
+
+                    {/* Active Indicator */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNavIndicator"
+                        className="absolute -bottom-8 left-0 right-0 h-1 bg-[#084097] rounded-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
 
               {/* Theme Toggle */}
               <button
@@ -99,7 +182,7 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden text-gray-700 dark:text-gray-300"
@@ -133,7 +216,10 @@ export default function Header() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      handleNavClick(e, item);
+                      setIsOpen(false);
+                    }}
                     className="text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-[#084097] dark:hover:text-cyan-400"
                   >
                     {item.name}

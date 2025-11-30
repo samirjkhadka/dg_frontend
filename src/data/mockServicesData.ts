@@ -1,6 +1,6 @@
 // src/data/mockServicesData.ts
 export interface Service {
-  id: string;
+  id: number;
   title: string;
   description: string;
   icon: string;
@@ -63,7 +63,7 @@ export const mockCategories: Category[] = [
 export const mockService: Service[] = [
   // Trading Platforms
   {
-    id: "1",
+    id: 1,
     categoryId: "1",
     title: "Online Trading System",
     icon: "Laptop",
@@ -77,7 +77,7 @@ export const mockService: Service[] = [
     ],
   },
   {
-    id: "2",
+    id: 2,
     categoryId: "1",
     title: "Broker Management Portal",
     icon: "Users",
@@ -93,7 +93,7 @@ export const mockService: Service[] = [
 
   // Risk & Compliance
   {
-    id: "3",
+    id: 3,
     categoryId: "2",
     title: "Real-Time Risk Engine",
     icon: "AlertTriangle",
@@ -106,7 +106,7 @@ export const mockService: Service[] = [
     ],
   },
   {
-    id: "4",
+    id: 4,
     categoryId: "2",
     title: "KYC/AML Suite",
     icon: "FileCheck",
@@ -121,7 +121,7 @@ export const mockService: Service[] = [
 
   // Market Data
   {
-    id: "5",
+    id: 5,
     categoryId: "3",
     title: "Live Market Feed",
     icon: "Radio",
@@ -134,7 +134,7 @@ export const mockService: Service[] = [
     ],
   },
   {
-    id: "6",
+    id: 6,
     categoryId: "3",
     title: "Analytics Dashboard",
     icon: "BarChart3",
@@ -150,7 +150,7 @@ export const mockService: Service[] = [
 
   // Mobile
   {
-    id: "7",
+    id: 7,
     categoryId: "4",
     title: "iOS & Android Apps",
     icon: "Smartphone",
@@ -166,7 +166,7 @@ export const mockService: Service[] = [
 
   // Backend
   {
-    id: "8",
+    id: 8,
     categoryId: "5",
     title: "High-Frequency Core",
     icon: "Zap",
@@ -181,7 +181,7 @@ export const mockService: Service[] = [
 
   // AI
   {
-    id: "9",
+    id: 9,
     categoryId: "6",
     title: "Algo Trading Bots",
     icon: "Bot",

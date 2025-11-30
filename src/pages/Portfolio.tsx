@@ -91,10 +91,13 @@ export default function Portfolio() {
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-3 text-[#084097] dark:text-cyan-400 font-black text-lg">
+                      <Link
+                        to={`/portfolio/${project.id}`}
+                        className="flex items-center gap-3 text-[#084097] dark:text-cyan-400 font-black text-lg"
+                      >
                         View Case Study
                         <iconMap.ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition" />
-                      </div>
+                      </Link>
                     </div>
                   </motion.div>
                 </Link>

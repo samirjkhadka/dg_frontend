@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { mockClients } from "@/data/mockClientData";
 
 const ClientMarquee = () => {
-  const duplicatedClients = [...mockClients, ...mockClients]; // for seamless loop
+  const duplicatedClients = [...mockClients, ...mockClients]; 
 
   return (
     <section className="py-16 md:py-24 bg-gray-50 dark:bg-slate-950 border-y border-gray-200 dark:border-white/10 overflow-hidden">

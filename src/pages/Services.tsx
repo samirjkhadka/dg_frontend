@@ -17,6 +17,7 @@ import {
   BarChart3,
   Zap,
   Bot,
+  ArrowRight,
 } from "lucide-react";
 import { mockCategories, mockService } from "@/data/mockServicesData";
 
@@ -183,9 +184,13 @@ export default function Services() {
                               </li>
                             ))}
                           </ul>
-                          <div className="mt-8 text-[#084097] dark:text-cyan-400 font-bold group-hover:translate-x-2 transition">
-                            Learn More →
-                          </div>
+                          <Link
+                            to={`/services/${service.id}`}
+                            className="mt-8 text-[#084097] dark:text-cyan-400 font-bold group-hover:translate-x-2 transition"
+                          >
+                            Learn More
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
+                          </Link>
                         </motion.div>
                       );
                     })}

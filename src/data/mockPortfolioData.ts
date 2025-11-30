@@ -1,6 +1,6 @@
 // src/data/mockPortfolioData.ts
 export interface Project {
-  id: string;
+  id: number;
   title: string;
   description: string;
   category: string;
@@ -14,7 +14,7 @@ export interface Project {
 
 export const mockProject: Project[] = [
   {
-    id: "1",
+    id: 1,
     title: "NEPSE Online Trading Platform",
     description:
       "Next-gen web trading terminal used by 40+ brokers in Nepal with real-time NEPSE data, advanced charting, and instant order execution.",
@@ -38,7 +38,7 @@ export const mockProject: Project[] = [
     ],
   },
   {
-    id: "2",
+    id: 2,
     title: "Himalayan Broker Pro",
     description:
       "Enterprise-grade brokerage management system with client onboarding, margin monitoring, and automated compliance reporting.",
@@ -55,7 +55,7 @@ export const mockProject: Project[] = [
     ],
   },
   {
-    id: "3",
+    id: 3,
     title: "Everest Mobile Trading App",
     description:
       "Native iOS & Android app with biometric login, push alerts, and offline watchlist — trusted by 100,000+ retail investors.",
@@ -72,7 +72,7 @@ export const mockProject: Project[] = [
     ],
   },
   {
-    id: "4",
+    id: 4,
     title: "Sagarmatha Risk Engine",
     description:
       "Real-time risk monitoring system preventing margin breaches and ensuring regulatory compliance across 15+ broker branches.",
@@ -89,7 +89,7 @@ export const mockProject: Project[] = [
     ],
   },
   {
-    id: "5",
+    id: 5,
     title: "Global IME Analytics Dashboard",
     description:
       "Institutional-grade market analytics platform with heatmaps, sector performance, and custom reporting tools.",
@@ -106,7 +106,7 @@ export const mockProject: Project[] = [
     ],
   },
   {
-    id: "6",
+    id: 6,
     title: "Kathmandu Finance Algo Bot",
     description:
       "AI-powered algorithmic trading system with backtesting, paper trading, and live deployment capabilities.",
