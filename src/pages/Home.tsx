@@ -22,11 +22,6 @@ const Home = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleViewAbout = () => {
-    navigate("/about");
-    window.scrollTo(0, 0);
-  };
-
   return (
     <>
       <Helmet>
@@ -394,11 +389,11 @@ const Home = () => {
               <div className="mt-16 flex items-center justify-center gap-12 text-lg opacity-80">
                 <div className="flex items-center gap-3">
                   <iconMap.Mail className="w-6 h-6" />
-                  hello@digihub.com.np
+                  support@digihub.io
                 </div>
                 <div className="flex items-center gap-3">
                   <iconMap.Phone className="w-6 h-6" />
-                  +977 1 4433 999
+                  +977 1 4547745
                 </div>
               </div>
             </motion.div>
