@@ -1,8 +1,8 @@
 // src/data/mockContactData.ts
 export const mockContactInfo = {
-  address: "Kalash Building, 5th Floor, Bhatbhateni, Naxal, Kathmandu, Nepal",
-  phone: "+977 1 4433 999",
-  email: "hello@digihub.com.np",
+  address: "Niketan Marg, Charkhaal, Dillibazaar, Kathmandu, Nepal",
+  phone: "+977-014547745, 9801890407",
+  email: "support@dghub.io, support@digihub.com.np",
   hours: "Sunday – Friday: 9:30 AM – 6:00 PM",
   mapUrl:
     "https://maps.google.com/maps?q=Kalash+Building+Naxal+Kathmandu&t=&z=17&ie=UTF8&iwloc=&output=embed",

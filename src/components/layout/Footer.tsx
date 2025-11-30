@@ -118,12 +118,16 @@ const Footer = () => {
               className="space-y-6"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#084097] to-cyan-600 rounded-xl flex items-center justify-center font-black text-white text-2xl shadow-lg">
-                  DH
-                </div>
-                <span className="text-2xl font-black text-gray-900 dark:text-white">
+                {/* <div className="w-12 h-12 bg-gradient-to-br from-[#084097] to-cyan-600 rounded-xl flex items-center justify-center font-black text-white text-2xl shadow-lg"> */}
+                <img
+                  src="/images/Dghub-svg-logo.svg"
+                  alt="DigiHub"
+                  className="h-25 w-25 relative rounded-full z-10 "
+                />
+                {/* </div> */}
+                {/* <span className="text-2xl font-black text-gray-900 dark:text-white">
                   Digi Hub
-                </span>
+                </span> */}
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed max-w-xs">
                 Nepal’s leading technology partner for capital markets. Building
@@ -241,7 +245,7 @@ const Footer = () => {
           >
             <div className="flex items-center gap-2">
               <Copyright className="w-4 h-4" />
-              <span>{year} Digi Hub. All rights reserved.</span>
+              <span>{year} DigiHub. All rights reserved.</span>
             </div>
             <div className="flex gap-6">
               <Link

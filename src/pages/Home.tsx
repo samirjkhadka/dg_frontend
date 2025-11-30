@@ -11,6 +11,7 @@ import { iconMap } from "@/lib/icons";
 import { mockProject } from "@/data/mockPortfolioData";
 import WhyChoose from "@/components/home/WhyChoose";
 import Features from "@/components/home/Features";
+import FloatingDemoButton from "@/components/layout/FloatingDemoButton";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,10 +45,10 @@ const Home = () => {
             heroStats={mockHeroStats.data}
           />
         </section>
-
+        <FloatingDemoButton />
         <ClientMarquee />
 
-        {/* UPDATED ABOUT SECTION  */}
+        {/* UPDATED ABOUT SECTION — NOW ELITE */}
         <section
           id="about"
           className="py-24 md:py-32 bg-white dark:bg-slate-900/30"
@@ -60,7 +61,7 @@ const Home = () => {
               className="text-center mb-20"
             >
               <h2 className="text-5xl md:text-7xl font-black mb-8">
-                About <span className="text-[#084097]">DigiHub</span>
+                About <span className="text-[#084097]">Us</span>
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-5xl mx-auto leading-relaxed">
                 We are Nepal’s leading technology partner for capital markets —

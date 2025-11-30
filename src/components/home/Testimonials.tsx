@@ -24,7 +24,7 @@ const Testimonials = () => {
           </p>
         </motion.div>
 
-        {/* Infinite Marquee - Row 1 */}
+        {/* Infinite Marquee - Row 1
         <div className="relative">
           <motion.div
             className="flex gap-8 py-8"
@@ -76,7 +76,7 @@ const Testimonials = () => {
               </div>
             ))}
           </motion.div>
-        </div>
+        </div> */}
 
         {/* Infinite Marquee - Row 2 (Reverse Direction) */}
         <div className="relative mt-12">

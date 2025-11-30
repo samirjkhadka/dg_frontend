@@ -95,18 +95,18 @@ export default function Header() {
             {/* LOGO */}
             <Link to="/" className="flex items-center space-x-4 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-[#084097] blur-xl rounded-full scale-110 opacity-70 group-hover:opacity-100 transition" />
-                <div className="relative p-2 bg-white dark:bg-black rounded-full shadow-2xl">
+                <div className="absolute inset-0  rounded-full scale-110 opacity-70 group-hover:opacity-100 transition" />
+                {/* <div className="relative p-2 bg-white dark:bg-black rounded-full shadow-2xl"> */}
                   <img
                     src="/images/Dghub-svg-logo.svg"
                     alt="DigiHub"
-                    className="h-10 w-10 relative z-10"
+                    className="h-25 w-25 relative rounded-full z-10 "
                   />
-                </div>
+                {/* </div> */}
               </div>
-              <span className="text-2xl font-black tracking-tight">
+              {/* <span className="text-2xl font-black tracking-tight">
                 <span className="text-[#084097] dark:text-white">DIGIHUB</span>
-              </span>
+              </span> */}
             </Link>
 
             {/* Desktop Menu */}
