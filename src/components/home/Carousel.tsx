@@ -16,7 +16,7 @@ import {
 
 // Floating tech icons with their positions
 const floatingIcons = [
-  { icon: FaCode, x: 10, y: 20, delay: 0, color: "text-blue-400" },
+  { icon: FaCode, x: 30, y: 15, delay: 0, color: "text-blue-400" },
   { icon: FaMobile, x: 85, y: 15, delay: 0.5, color: "text-purple-400" },
   { icon: FaDesktop, x: 50, y: 74, delay: 1, color: "text-green-400" },
   { icon: FaDatabase, x: 80, y: 75, delay: 1.5, color: "text-orange-400" },
@@ -418,19 +418,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroData, heroStats }) => {
 
             {/* Additional floating badge */}
             <motion.div
-              className="absolute top-1/2 -right-12 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-xl rounded-2xl p-4 border border-green-500/30 shadow-xl"
+              className="absolute -bottom-6 -right-12 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-xl rounded-2xl p-4 border border-green-500/30 shadow-xl"
               animate={{
                 rotate: [0, 3, 0],
-                x: mousePosition.x * 10,
-                y: mousePosition.y * 10,
+                x: mousePosition.x * 20,
+                y: mousePosition.y * 1,
               }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 2,
-                x: { type: "spring", stiffness: 60, damping: 20 },
-                y: { type: "spring", stiffness: 60, damping: 20 },
+                x: { type: "spring", stiffness: 80, damping: 20 },
               }}
             >
               <div className="text-green-400 font-bold">Python</div>
