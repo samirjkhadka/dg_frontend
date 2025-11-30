@@ -4,12 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/home/Carousel";
 import Testimonials from "@/components/home/Testimonials";
-import {
-  mockHeroData,
-  mockHeroStats,
-  mockServices,
-  mockProjects,
-} from "@/data/mockHomeData";
+import { mockHeroData, mockHeroStats } from "@/data/mockHomeData";
 import ClientMarquee from "@/components/common/ClientMarquee";
 import { mockService } from "@/data/mockServicesData";
 import { iconMap } from "@/lib/icons";
@@ -92,7 +87,9 @@ const Home = () => {
                     icon: "Shield",
                   },
                 ].map((item, i) => {
-                  const Icon = iconMap[item.icon];
+                  const Icon =
+                    iconMap[item.icon as keyof typeof iconMap] ||
+                    iconMap.Landmark;
                   return (
                     <motion.div
                       key={i}
@@ -189,7 +186,9 @@ const Home = () => {
 
             <div className="grid md:grid-cols-3 gap-10">
               {mockService.slice(0, 6).map((service, i) => {
-                const ServiceIcon = iconMap[service.icon];
+                const ServiceIcon =
+                  iconMap[service.icon as keyof typeof iconMap] ||
+                  iconMap.Laptop;
                 return (
                   <Link
                     to={`/services#category-${service.categoryId}`}

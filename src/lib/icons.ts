@@ -58,3 +58,6 @@ export const iconMap = {
   Copyright,
   CheckCircle
 } as const;
+
+
+export type IconName = keyof typeof iconMap;
