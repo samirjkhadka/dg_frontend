@@ -17,6 +17,6 @@ export const mockContactInfo = {
       url: "https://facebook.com/digihubnp",
       icon: "Facebook",
     },
-    { name: "Twitter", url: "https://twitter.com/digihubnp", icon: "Twitter" },
+    { name: "Youtube", url: "https://twitter.com/digihubnp", icon: "Youtube" },
   ],
 };

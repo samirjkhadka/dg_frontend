@@ -24,7 +24,7 @@ const features = [
     desc: "Role-based permissions with full audit trail for compliance",
   },
   {
-    icon: "Code",
+    icon: "Plug",
     title: "Seamless Integration",
     desc: "Connect with existing platforms and APIs for a unified trading experience",
   },

@@ -31,6 +31,8 @@ import {
   ZapIcon,
   ShieldCheck,
   LandmarkIcon,
+  Youtube,
+  Plug,
 } from "lucide-react";
 
 export const iconMap = {
@@ -65,6 +67,8 @@ export const iconMap = {
   ZapIcon,
   ShieldCheck,
   LandmarkIcon,
+  Youtube,
+  Plug,
 } as const;
 
 export type IconName = keyof typeof iconMap;
