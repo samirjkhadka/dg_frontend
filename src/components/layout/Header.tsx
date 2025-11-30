@@ -46,8 +46,7 @@ export default function Header() {
                 </div>
               </div>
               <span className="text-2xl font-black tracking-tight">
-                <span className="text-[#084097] dark:text-white">DIGI</span>
-                <span className="text-cyan-500">HUB</span>
+                <span className="text-[#084097] dark:text-white">DIGIHUB</span>
               </span>
             </Link>
 
