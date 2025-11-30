@@ -60,16 +60,6 @@ export const mockClients: Client[] = [
   },
 
   {
-    name: "Kathmandu Finance",
-    logo: "/images/clients/nic-asia.png",
-    width: 140,
-  },
-  {
-    name: "Everest Securities",
-    logo: "/images/clients/everest.png",
-    width: 130,
-  },
-  {
     name: "Secured Securities",
     logo: "/images/clients/SecuredSec.png",
     width: 130,

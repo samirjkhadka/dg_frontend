@@ -26,7 +26,11 @@ import {
   Facebook,
   Twitter,
   Copyright,
-  CheckCircle
+  CheckCircle,
+  Trophy,
+  ZapIcon,
+  ShieldCheck,
+  LandmarkIcon,
 } from "lucide-react";
 
 export const iconMap = {
@@ -56,8 +60,11 @@ export const iconMap = {
   Facebook,
   Twitter,
   Copyright,
-  CheckCircle
+  CheckCircle,
+  Trophy,
+  ZapIcon,
+  ShieldCheck,
+  LandmarkIcon,
 } as const;
-
 
 export type IconName = keyof typeof iconMap;
