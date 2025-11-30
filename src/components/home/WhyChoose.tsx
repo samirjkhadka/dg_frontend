@@ -35,7 +35,7 @@ const WhyChoose = () => {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-7xl font-black mb-8">
-            Why Choose <span className="text-[#084097]">Digi Hub</span>?
+            Why Choose <span className="text-[#084097]">DIGI HUB</span>?
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
             Join Nepal’s fastest-growing brokers who trust us to power their

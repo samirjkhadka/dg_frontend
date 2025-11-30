@@ -105,7 +105,7 @@ export default function Header() {
               {/* </div> */}
               {/* </div> */}
               {/* <span className="text-2xl font-black tracking-tight">
-                <span className="text-[#084097] dark:text-white">DIGIHUB</span>
+                <span className="text-[#084097] dark:text-white">DIGI HUB</span>
               </span> */}
             </Link>
 

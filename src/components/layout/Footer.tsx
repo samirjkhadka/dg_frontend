@@ -245,7 +245,7 @@ const Footer = () => {
           >
             <div className="flex items-center gap-2">
               <Copyright className="w-4 h-4" />
-              <span>{year} DigiHub. All rights reserved.</span>
+              <span>{year} Digi Hub. All rights reserved.</span>
             </div>
             <div className="flex gap-6">
               <Link
