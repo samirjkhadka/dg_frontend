@@ -20,18 +20,18 @@ const features = [
   },
   {
     icon: "Users",
-    title: "Multi-User Access",
+    title: "Multi-User Management",
     desc: "Role-based permissions with full audit trail for compliance",
+  },
+  {
+    icon: "Code",
+    title: "Seamless Integration",
+    desc: "Connect with existing platforms and APIs for a unified trading experience",
   },
   {
     icon: "Radio",
     title: "Live Market Data",
     desc: "Real-time NEPSE feed with depth and order book",
-  },
-  {
-    icon: "Headphones",
-    title: "24/7 Nepali Support",
-    desc: "Dedicated team available during and after trading hours",
   },
 ];
 

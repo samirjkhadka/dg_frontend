@@ -44,20 +44,20 @@ export const mockCategories: Category[] = [
       "Native iOS & Android apps with real-time sync and biometric login",
     icon: "Smartphone",
   },
-  {
-    id: "5",
-    title: "Backend Infrastructure",
-    description:
-      "Scalable microservices, WebSocket servers, and cloud deployment",
-    icon: "Server",
-  },
-  {
-    id: "6",
-    title: "AI & Automation",
-    description:
-      "Algorithmic trading bots, predictive analytics, and smart alerts",
-    icon: "Brain",
-  },
+  // {
+  //   id: "5",
+  //   title: "Backend Infrastructure",
+  //   description:
+  //     "Scalable microservices, WebSocket servers, and cloud deployment",
+  //   icon: "Server",
+  // },
+  // {
+  //   id: "6",
+  //   title: "AI & Automation",
+  //   description:
+  //     "Algorithmic trading bots, predictive analytics, and smart alerts",
+  //   icon: "Brain",
+  // },
 ];
 
 export const mockService: Service[] = [
@@ -105,19 +105,19 @@ export const mockService: Service[] = [
       "Regulatory Alerts",
     ],
   },
-  {
-    id: 4,
-    categoryId: "2",
-    title: "KYC/AML Suite",
-    icon: "FileCheck",
-    description: "Automated identity verification and transaction monitoring.",
-    features: [
-      "eKYC Integration",
-      "PEP & Sanction Screening",
-      "Suspicious Activity Reports",
-      "Document Management",
-    ],
-  },
+  // {
+  //   id: 4,
+  //   categoryId: "2",
+  //   title: "KYC/AML Suite",
+  //   icon: "FileCheck",
+  //   description: "Automated identity verification and transaction monitoring.",
+  //   features: [
+  //     "eKYC Integration",
+  //     "PEP & Sanction Screening",
+  //     "Suspicious Activity Reports",
+  //     "Document Management",
+  //   ],
+  // },
 
   // Market Data
   {
@@ -164,33 +164,33 @@ export const mockService: Service[] = [
     ],
   },
 
-  // Backend
-  {
-    id: 8,
-    categoryId: "5",
-    title: "High-Frequency Core",
-    icon: "Zap",
-    description: "Sub-millisecond order matching engine built for scale.",
-    features: [
-      "FIX Protocol Support",
-      "Co-location Ready",
-      "99.99% Uptime",
-      "Auto-scaling",
-    ],
-  },
+  // // Backend
+  // {
+  //   id: 8,
+  //   categoryId: "5",
+  //   title: "High-Frequency Core",
+  //   icon: "Zap",
+  //   description: "Sub-millisecond order matching engine built for scale.",
+  //   features: [
+  //     "FIX Protocol Support",
+  //     "Co-location Ready",
+  //     "99.99% Uptime",
+  //     "Auto-scaling",
+  //   ],
+  // },
 
   // AI
-  {
-    id: 9,
-    categoryId: "6",
-    title: "Algo Trading Bots",
-    icon: "Bot",
-    description: "Automated strategies with backtesting and live execution.",
-    features: [
-      "Strategy Builder",
-      "Paper Trading",
-      "Risk Controls",
-      "Performance Analytics",
-    ],
-  },
+  // {
+  //   id: 9,
+  //   categoryId: "6",
+  //   title: "Algo Trading Bots",
+  //   icon: "Bot",
+  //   description: "Automated strategies with backtesting and live execution.",
+  //   features: [
+  //     "Strategy Builder",
+  //     "Paper Trading",
+  //     "Risk Controls",
+  //     "Performance Analytics",
+  //   ],
+  // },
 ];

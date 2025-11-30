@@ -7,7 +7,7 @@ const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Products", href: "/portfolio" },
+  // { name: "Products", href: "/portfolio" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -39,7 +39,7 @@ export default function Header() {
   useEffect(() => {
     if (location.pathname !== "/") return;
 
-    const sections = ["home", "about", "services", "portfolio", "contact"];
+    const sections = ["home", "about", "services", "contact"];
     const handleScroll = () => {
       let current = "home";
       for (const section of sections) {

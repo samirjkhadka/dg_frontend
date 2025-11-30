@@ -7,7 +7,6 @@ import { mockHeroData, mockHeroStats } from "@/data/mockHomeData";
 import ClientMarquee from "@/components/common/ClientMarquee";
 import { mockService } from "@/data/mockServicesData";
 import { iconMap } from "@/lib/icons";
-import { mockProject } from "@/data/mockPortfolioData";
 import WhyChoose from "@/components/home/WhyChoose";
 import Features from "@/components/home/Features";
 import FloatingDemoButton from "@/components/layout/FloatingDemoButton";
@@ -273,7 +272,7 @@ const Home = () => {
 
         <Features />
         {/* PORTFOLIO SECTION — HOME PAGE */}
-        <section
+        {/* <section
           id="portfolio"
           className="py-24 md:py-32 bg-gray-50 dark:bg-slate-950"
         >
@@ -340,7 +339,7 @@ const Home = () => {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Testimonials
         <section
