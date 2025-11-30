@@ -1,179 +1,122 @@
+// src/pages/About.tsx
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import {
   FaRocket,
   FaEye,
-  //  FaUsers,
-  // FaLightbulb,
-  // FaCode,
-  // FaHeart,
-  FaStar,
-  // FaCheckCircle,
+  FaLightbulb,
+  FaUsers,
+  FaCode,
+  FaHeart,
 } from "react-icons/fa";
 import {
-  useAboutSection,
-  useAboutStats,
-  useAboutValues,
-} from "../hooks/useContent";
-import LoadingSpinner from "../components/common/LoadingSpinner";
+  mockAboutData,
+  mockAboutStats,
+  mockAboutValues,
+} from "@/data/mockAboutData";
+import { JSX } from "react";
+
+const iconMap: Record<string, JSX.Element> = {
+  Lightbulb: <FaLightbulb className="text-3xl" />,
+  Users: <FaUsers className="text-3xl" />,
+  Heart: <FaHeart className="text-3xl" />,
+  Rocket: <FaRocket className="text-3xl" />,
+  Code: <FaCode className="text-3xl" />,
+  Eye: <FaEye className="text-3xl" />,
+};
 
 const About = () => {
-  // Fetch about section data from API
-  const {
-    data: aboutData,
-    isLoading: aboutLoading,
-    error: aboutError,
-  } = useAboutSection();
-
-  const {
-    data: aboutStats,
-    // isLoading: aboutStatsLoading,
-    // error: aboutStatsError,
-  } = useAboutStats();
-  const {
-    data: aboutValues,
-    // isLoading: aboutValuesLoading,
-    // error: aboutValuesError,
-  } = useAboutValues();
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 },
-  };
-
-  // Show loading spinner if data is loading
-  if (aboutLoading) {
-    return <LoadingSpinner />;
-  }
-
-  // Show error message if data failed to load
-  if (aboutError) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-500 mb-4">
-            Error Loading About Section
-          </h2>
-          <p className="text-gray-600">Please try refreshing the page.</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       <Helmet>
-        <title>About Us | Digi Hub - Our Story & Mission</title>
+        <title>About Us | Digi Hub - Our Mission, Vision & Values</title>
         <meta
           name="description"
-          content="Learn about Digi Hub - our mission, vision, and the passionate team behind our innovative digital solutions."
+          content="Discover Digi Hub — a leading technology partner transforming capital markets with secure, innovative, and scalable digital solutions."
         />
       </Helmet>
-      <div className="pt-20">
+
+      <div className="pt-24 md:pt-28 lg:pt-32 min-h-screen bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
         {/* Hero Section */}
-        <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/50 to-slate-900 overflow-hidden">
-          {/* Animated background grid */}
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-                backgroundSize: "60px 60px",
-              }}
-            />
+        <section className="relative py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#084097]/5 via-transparent to-cyan-500/5 dark:from-[#084097]/10" />
           </div>
 
-          {/* Gradient orbs */}
-          <div className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-
-          <div className="container relative z-10 h-screen flex items-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="container mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left: Text */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="space-y-6"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-primary/20 to-blue-500/20 px-6 py-3 rounded-full text-sm border border-primary/30 backdrop-blur-sm"
-                >
-                  <FaRocket className="text-primary animate-pulse" />
-                  <span className="text-gray-200 font-medium">Our Story</span>
-                  <FaStar className="text-yellow-400" />
-                </motion.div>
+                <div className="inline-flex items-center gap-3 bg-[#084097]/10 dark:bg-[#084097]/20 px-6 py-3 rounded-full text-sm font-medium text-[#084097] dark:text-cyan-400 border border-[#084097]/20 mb-8">
+                  <FaRocket /> Our Story
+                </div>
 
-                <h1 className="heading-1">
-                  {aboutData?.data?.title || "About Digi Hub"}
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+                  Building the Future of
+                  <span className="block text-[#084097]">Capital Markets</span>
                 </h1>
-                <p className="text-xl text-gray-200 leading-relaxed text-justify">
-                  {aboutData?.data?.description ||
-                    "We are a team of passionate developers, designers, and innovators dedicated to creating cutting-edge digital solutions that transform businesses and enhance user experiences."}
+
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+                  {mockAboutData.description}
                 </p>
+
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <div className="px-8 py-4 bg-[#084097] text-white rounded-full font-bold shadow-lg">
+                    Since 2020
+                  </div>
+                  <div className="px-8 py-4 bg-white dark:bg-white/10 border border-gray-300 dark:border-white/20 rounded-full font-medium backdrop-blur-sm">
+                    Trusted by Institutions Worldwide
+                  </div>
+                </div>
               </motion.div>
+
+              {/* Right: Visual */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="relative"
               >
-                <div className="bg-slate-800/60 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 shadow-2xl">
-                  <div className="aspect-square flex items-center justify-center">
-                    {aboutData?.data?.image ? (
-                      <img
-                        src={
-                          aboutData.data.image
-                            ? `${
-                                import.meta.env.VITE_API_BASE_URL_Images
-                              }/uploads/${aboutData.data.image}`
-                            : "/images/placeholder.png"
-                        }
-                        alt="Digi Hub"
-                        className="w-full h-full object-cover rounded-3xl"
-                        crossOrigin="anonymous"
-                      />
-                    ) : (
-                      <div className="text-8xl font-bold text-primary-gradient">
-                        DH
-                      </div>
-                    )}
+                <div className="relative bg-gradient-to-br from-[#084097]/10 to-cyan-500/10 dark:from-[#084097]/20 dark:to-cyan-600/20 backdrop-blur-xl rounded-3xl p-12 border border-[#084097]/20 dark:border-cyan-500/30 shadow-2xl">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 30,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-0 rounded-3xl border-2 border-dashed border-[#084097]/30 dark:border-cyan-500/30"
+                  />
+                  <div className="text-9xl font-black text-center text-[#084097] dark:text-cyan-400">
+                    DH
                   </div>
                 </div>
 
-                {/* Floating elements */}
+                {/* Floating Cards */}
                 <motion.div
-                  className="absolute -top-6 -right-6 bg-gradient-to-r from-primary/20 to-blue-500/20 backdrop-blur-xl rounded-2xl p-5 border border-primary/30 shadow-xl"
-                  animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  animate={{ y: [-10, 10, -10] }}
+                  transition={{ duration: 6, repeat: Infinity }}
+                  className="absolute -top-6 -left-6 bg-white dark:bg-slate-900 shadow-xl rounded-2xl p-5 border border-gray-200 dark:border-white/20"
                 >
-                  <div className="text-primary font-bold text-lg">
+                  <div className="text-[#084097] dark:text-cyan-400 font-bold">
                     Innovation
                   </div>
-                  <div className="text-xs text-gray-400">At Core</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    First
+                  </div>
                 </motion.div>
 
                 <motion.div
-                  className="absolute -bottom-6 -left-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl p-5 border border-blue-500/30 shadow-xl"
-                  animate={{ y: [0, 15, 0], rotate: [0, -2, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1,
-                  }}
+                  animate={{ y: [10, -10, 10] }}
+                  transition={{ duration: 6, repeat: Infinity, delay: 2 }}
+                  className="absolute -bottom-6 -right-6 bg-[#084097] text-white rounded-2xl p-5 shadow-xl"
                 >
-                  <div className="text-blue-400 font-bold text-lg">
-                    Excellence
-                  </div>
-                  <div className="text-xs text-gray-400">In Delivery</div>
+                  <div className="font-bold">Excellence</div>
+                  <div className="text-sm opacity-90">Always</div>
                 </motion.div>
               </motion.div>
             </div>
@@ -181,170 +124,112 @@ const About = () => {
         </section>
 
         {/* Mission & Vision */}
+        <section className="py-24 bg-white dark:bg-slate-900/50">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Our Mission & Vision
+              </h2>
+            </div>
 
-        <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 overflow-hidden">
-          {/* Background effects */}
-          <div className="absolute top-10 right-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-          <div className="absolute bottom-10 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-
-          <div className="container relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="heading-2 mb-6">Our Mission & Vision</h2>
-              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed text-justify">
-                We strive to be at the forefront of technological innovation,
-                delivering solutions that drive business growth and create
-                lasting impact.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
               <motion.div
-                {...fadeInUp}
-                className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="bg-gradient-to-br from-[#084097]/5 to-transparent dark:from-[#084097]/10 rounded-3xl p-10 border border-[#084097]/20 dark:border-cyan-500/30"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
-                      <FaRocket className="text-white text-xl" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-white">
-                      Our Mission
-                    </h3>
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="w-16 h-16 bg-[#084097] rounded-2xl flex items-center justify-center">
+                    <FaRocket className="text-white text-2xl" />
                   </div>
-                  <p className="text-gray-200 leading-relaxed text-base text-justify">
-                    {aboutData?.data?.mission ||
-                      " At Digi Hub, our mission is to empower businesses and individuals by delivering cutting-edge technology solutions                    that boost efficiency, transparency, and accessibilityacross various industries. We are dedicated to buildingseamless, secure and reliable platforms that foster growthand profitability, enabling our clients to reach their  fullest potential in a rapidly changing digital world."}
-                  </p>
+                  <h3 className="text-3xl font-bold">Our Mission</h3>
                 </div>
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {mockAboutData.mission}
+                </p>
               </motion.div>
+
               <motion.div
-                {...fadeInUp}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+                className="bg-gradient-to-br from-cyan-500/5 to-transparent dark:from-cyan-500/10 rounded-3xl p-10 border border-cyan-500/30"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                      <FaEye className="text-white text-xl" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-white">
-                      Our Vision
-                    </h3>
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="w-16 h-16 bg-cyan-500 rounded-2xl flex items-center justify-center">
+                    <FaEye className="text-white text-2xl" />
                   </div>
-                  <p className="text-gray-200 leading-relaxed text-base text-justify">
-                    {aboutData?.data?.vision ||
-                      "Our vision is to become a global leader in technology-driven solutions, revolutionizing industries and setting new benchmarks for excellence in capital markets, fintech, and beyond. We aim to consistently innovate, broaden our offerings, and provide exceptional value to our clients, while maintaining the highest standards of quality and customer satisfaction."}
-                  </p>
+                  <h3 className="text-3xl font-bold">Our Vision</h3>
                 </div>
+                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {mockAboutData.vision}
+                </p>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
-        {aboutStats?.data && aboutStats.data.length > 0 && (
-          <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 overflow-hidden">
-            {/* Background effects */}
-            <div className="absolute top-10 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-
-            <div className="container relative z-10">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <h2 className="heading-2 mb-6">Our Achievements</h2>
-                <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-                  Numbers that reflect our commitment to excellence
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {aboutStats?.data.map((stat, index) => (
-                  <motion.div
-                    key={stat.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                  >
-                    <div className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300">
-                      <div className="text-4xl font-bold t bg-clip-text bg-gradient-to-r from-primary to-blue-400 mb-4">
-                        {stat.icon} {stat.value}
-                      </div>
-                    
-                      <div className="text-lg text-gray-300 font-medium">
-                        {stat.title}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+        {/* Stats */}
+        <section className="py-24 bg-gray-100 dark:bg-slate-900">
+          <div className="container mx-auto px-6 text-center">
+            <h2 className="text-5xl md:text-6xl font-bold mb-16">
+              Our Achievements
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {mockAboutStats.map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white dark:bg-white/5 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-gray-200 dark:border-white/10"
+                >
+                  <div className="text-5xl font-black text-[#084097] mb-3">
+                    {stat.value}
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400 font-medium">
+                    {stat.title}
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
-        {/* Values */}
-        {aboutValues?.data && aboutValues.data.length > 0 && (
-          <section className="relative py-20 bg-gradient-to-br from-slate-900 via-purple-900/10 to-slate-900 overflow-hidden">
-            {/* Background effects */}
-            <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-300"></div>
-            <div className="absolute bottom-20 right-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-
-            <div className="container relative z-10">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <h2 className="heading-2 mb-6">Our Core Values</h2>
-                <p className="text-xl text-gray-200 max-w-3xl mx-auto text-center">
-                  The principles that guide everything we do
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {aboutValues?.data.map((value, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl text-center hover:scale-105 transition-transform duration-300 relative overflow-hidden"
-                  >
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
-                    <div className="relative z-10">
-                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg hover:shadow-primary/25 transition-shadow duration-300">
-                        {value.icon}
-                      </div>
-                      <h3 className="text-xl font-semibold text-white mb-4">
-                        {value.title}
-                      </h3>
-                      <p className="text-gray-200 text-base leading-relaxed text-justify">
-                        {value.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+        {/* Core Values */}
+        <section className="py-24">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Our Core Values
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                The principles that define who we are and how we work
+              </p>
             </div>
-          </section>
-        )}
+
+            <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
+              {mockAboutValues.map((value, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white dark:bg-white/5 backdrop-blur-sm rounded-3xl p-8 text-center border border-gray-200 dark:border-white/10 hover:border-[#084097] dark:hover:border-cyan-500 transition-all group"
+                  whileHover={{ y: -8 }}
+                >
+                  <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#084097] to-cyan-500 rounded-3xl flex items-center justify-center text-white group-hover:scale-110 transition">
+                    {iconMap[value.icon]}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {value.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
