@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/home/Carousel";
-import Testimonials from "@/components/home/Testimonials";
 import { mockHeroData, mockHeroStats } from "@/data/mockHomeData";
 import ClientMarquee from "@/components/common/ClientMarquee";
 import { mockService } from "@/data/mockServicesData";
@@ -13,6 +12,7 @@ import WhyChoose from "@/components/home/WhyChoose";
 import Features from "@/components/home/Features";
 import FloatingDemoButton from "@/components/layout/FloatingDemoButton";
 import { MoveRight } from "lucide-react";
+import AnnouncementTicker from "@/components/common/AnnoucementTicker";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -34,6 +34,8 @@ const Home = () => {
 
       {/* Main Wrapper */}
       <div className="pt-24 md:pt-28 lg:pt-32 min-h-screen bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+       <AnnouncementTicker />
+       
         {/* Hero Section */}
         <section id="home">
           <HeroSection
@@ -340,13 +342,13 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials
         <section
           id="testimonials"
           className="py-24 bg-gray-100 dark:bg-slate-900/50"
         >
           <Testimonials />
-        </section>
+        </section> */}
 
         {/* Contact */}
         {/* CONTACT CTA — HOME PAGE */}
