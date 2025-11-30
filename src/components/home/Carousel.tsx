@@ -18,7 +18,7 @@ import {
 const floatingIcons = [
   { icon: FaCode, x: 10, y: 20, delay: 0, color: "text-blue-400" },
   { icon: FaMobile, x: 85, y: 15, delay: 0.5, color: "text-purple-400" },
-  { icon: FaDesktop, x: 15, y: 70, delay: 1, color: "text-green-400" },
+  { icon: FaDesktop, x: 50, y: 74, delay: 1, color: "text-green-400" },
   { icon: FaDatabase, x: 80, y: 75, delay: 1.5, color: "text-orange-400" },
   { icon: FaCloud, x: 50, y: 10, delay: 2, color: "text-pink-400" },
 ];
@@ -280,7 +280,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroData, heroStats }) => {
                 heroStats.slice(0, 8).map((stat) => (
                   <div key={stat.id} className="text-center">
                     <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
-                    {stat.icon}  {stat.number}
+                      {stat.icon} {stat.number}
                     </div>
                     <div className="text-sm text-gray-400 font-medium">
                       {stat.label}
