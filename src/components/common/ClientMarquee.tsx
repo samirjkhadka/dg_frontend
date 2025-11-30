@@ -11,7 +11,7 @@ const ClientMarquee = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Duplicate for seamless loop
-  const row1 = [...mockClients, ...mockClients];
+  // const row1 = [...mockClients, ...mockClients];
   const row2 = [
     ...mockClients.slice().reverse(),
     ...mockClients.slice().reverse(),
