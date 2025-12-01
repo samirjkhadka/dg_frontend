@@ -12,13 +12,6 @@ export default function HeroSection({}: any) {
         {/* Dark Mode: Deep, elegant gradient */}
         <div className="hidden dark:block absolute inset-0 bg-gradient-to-br from-slate-950 via-[#084097]/20 to-slate-900" />
 
-        {/* Optional Hero Image with proper opacity */}
-        <img
-          src="/images/hero-1.webp"
-          alt="DigiHub Hero"
-          className="absolute inset-0 w-full h-full object-cover opacity-20 dark:opacity-30"
-        />
-
         {/* Subtle overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent dark:from-black/60" />
       </div>
@@ -59,7 +52,7 @@ export default function HeroSection({}: any) {
         >
           <Link
             to="/services"
-            className="px-10 py-5 text-lg font-bold bg-[#084097] hover:bg-[#06307a] text-white rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-2xl"
+            className="px-10 py-5 text-lg font-bold bg-gradient-to-r from-[#084097] to-cyan-600 text-white rounded-full shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transition-all duration-500"
           >
             Explore Our Solutions
           </Link>

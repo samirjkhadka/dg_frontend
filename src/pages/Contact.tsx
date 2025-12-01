@@ -121,7 +121,7 @@ export default function Contact() {
                       />
                       <button
                         type="submit"
-                        className="w-full py-6 bg-[#084097] hover:bg-[#06307a] text-white font-black text-xl rounded-xl transition-all hover:scale-105 shadow-xl"
+                        className="w-full py-6 bg-gradient-to-r from-[#084097] to-cyan-600 text-white rounded-full shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transition-all duration-500"
                       >
                         Send Message
                       </button>
@@ -155,7 +155,7 @@ export default function Contact() {
                           <p className="font-bold text-xl">Call Us</p>
                           <a
                             href="tel:+97714433999"
-                            className="text-[#084097] dark:text-cyan-400 font-bold"
+                            className="text-[#084097] dark:text-gray-300 font-bold"
                           >
                             {mockContactInfo.phone}
                           </a>
@@ -167,7 +167,7 @@ export default function Contact() {
                           <p className="font-bold text-xl">Email</p>
                           <a
                             href="mailto:hello@digihub.com.np"
-                            className="text-[#084097] dark:text-cyan-400 font-bold"
+                            className="text-[#084097] dark:text-gray-300 font-bold"
                           >
                             {mockContactInfo.email}
                           </a>

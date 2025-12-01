@@ -94,19 +94,13 @@ export default function Header() {
           <div className="flex items-center justify-between">
             {/* LOGO */}
             <Link to="/" className="flex items-center space-x-3 group">
-              {/* <div className="relative">
-                <div className="absolute inset-0 bg-[#084097] rounded-full blur-xl scale-125 opacity-60 group-hover:opacity-90 group-hover:scale-150 transition-all duration-500" />
-                <div className="relative p-3 bg-white dark:bg-black rounded-full shadow-2xl ring-4 ring-white/20 dark:ring-black/50"> */}
+              
               <img
                 src="/images/Dghub-svg-logo.svg"
                 alt="DigiHub"
                 className="h-[3.5rem] w-[8.5rem] object-contain relative z-10 transition-transform duration-300 group-hover:scale-110"
               />
-              {/* </div> */}
-              {/* </div> */}
-              {/* <span className="text-2xl font-black tracking-tight">
-                <span className="text-[#084097] dark:text-white">DIGI HUB</span>
-              </span> */}
+             
             </Link>
 
             {/* Desktop Menu */}
@@ -127,8 +121,8 @@ export default function Header() {
                     <span
                       className={`${
                         isActive
-                          ? "text-[#084097] dark:text-cyan-400"
-                          : "text-gray-700 dark:text-gray-300 hover:text-[#084097] dark:hover:text-cyan-400"
+                          ? "text-[#084097] dark:text-[#084097]"
+                          : "text-gray-700 dark:text-gray-300 hover:text-[#084097] dark:hover:text-[#084097]"
                       }`}
                     >
                       {item.name}
@@ -176,7 +170,7 @@ export default function Header() {
 
               <Link
                 to="/contact"
-                className="px-8 py-3.5 bg-[#084097] hover:bg-[#06307a] text-white rounded-full font-bold text-lg transition shadow-lg"
+                className="px-8 py-3.5 bg-gradient-to-r from-[#084097] to-cyan-600 text-white font-black text-lg rounded-full shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transition-all duration-500"
               >
                 Get Started
               </Link>

@@ -1,5 +1,3 @@
-// src/components/Footer.tsx — FINAL VERSION (Beautiful & Consistent)
-
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useEffect, memo } from "react";
@@ -49,7 +47,7 @@ const ScrollToTopButton = () => {
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.95 }}
           onClick={scrollUp}
-          className="fixed bottom-8 right-8 bg-[#084097] dark:bg-cyan-500 text-white p-4 rounded-full shadow-2xl z-50 border border-white/30 backdrop-blur-sm"
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-[#084097] to-cyan-600 text-white rounded-full shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transition-all duration-500 p-4"
           aria-label="Back to top"
         >
           <ArrowUp className="w-6 h-6" />
@@ -167,7 +165,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <h3 className="text-lg font-bold mb-6 text-[#084097] dark:text-cyan-400">
+              <h3 className="text-lg font-bold mb-6 text-[#084097] dark:text-[#084097]">
                 Quick Links
               </h3>
               <ul className="space-y-4">
@@ -185,7 +183,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h3 className="text-lg font-bold mb-6 text-[#084097] dark:text-cyan-400">
+              <h3 className="text-lg font-bold mb-6 text-[#084097] dark:text-[#084097]">
                 Our Services
               </h3>
               <ul className="space-y-4 text-sm">
@@ -215,13 +213,13 @@ const Footer = () => {
               transition={{ delay: 0.3 }}
               className="space-y-6"
             >
-              <h3 className="text-lg font-bold mb-6 text-[#084097] dark:text-cyan-400">
+              <h3 className="text-lg font-bold mb-6 text-[#084097] dark:text-[#084097]">
                 Get in Touch
               </h3>
               <div className="space-y-5 text-sm">
                 <div className="flex gap-4 items-start">
                   <MapPin className="w-5 h-5 text-[#084097] dark:text-cyan-400 mt-0.5" />
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="hover:text-[#084097] dark:hover:text-cyan-400 transition">
                     {mockContactInfo.address}
                   </p>
                 </div>

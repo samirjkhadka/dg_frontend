@@ -186,7 +186,7 @@ export default function Services() {
                           </ul>
                           <Link
                             to={`/services/${service.id}`}
-                            className="mt-8 text-[#084097] dark:text-cyan-400 font-bold group-hover:translate-x-2 transition"
+                            className="mt-8 text-[#084097] dark:text-cyan-400 font-bold group-hover:translate-x-2 transition flex items-center gap-2"
                           >
                             Learn More
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />

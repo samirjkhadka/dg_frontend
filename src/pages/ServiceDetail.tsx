@@ -280,7 +280,7 @@ const ServiceDetail = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-6 h-6" />
-                +977 1 454 7745
+                +977 - 14547745
               </div>
             </div>
           </motion.div>

@@ -78,7 +78,7 @@ const Services = () => {
         <div className="text-center mt-16">
           <button
             onClick={handleViewAllServices}
-            className="px-14 py-6 bg-[#084097] hover:bg-[#06307a] text-white font-black text-xl rounded-full transition-all shadow-2xl hover:shadow-3xl hover:scale-105 flex items-center gap-4 mx-auto"
+            className="px-14 py-6 bg-gradient-to-r from-[#084097] to-cyan-600 text-white font-black text-lg rounded-full shadow-2xl hover:shadow-cyan-500/50 hover:scale-110 transition-all duration-500 flex items-center gap-4 mx-auto"
           >
             View All Services
             <iconMap.ArrowRight className="w-6 h-6" />

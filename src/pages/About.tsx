@@ -88,7 +88,7 @@ const About = () => {
                     Since 2020
                   </div>
                   <div className="px-8 py-4 bg-white dark:bg-white/10 border border-gray-300 dark:border-white/20 rounded-full font-bold backdrop-blur-sm shadow-lg">
-                    Trusted by 50+ Brokers
+                    Trusted by 50+ Clients
                   </div>
                 </div>
               </motion.div>
@@ -158,9 +158,9 @@ const About = () => {
                   initial={{ opacity: 0, y: 100 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.8 }}
-                  className="absolute bottom-20 left-20 w-64 h-44 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl shadow-2xl p-8 text-white"
+                  className="absolute bottom-20 left-20 w-80 h-56 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl shadow-2xl p-8 text-white"
                 >
-                  <div className="text-4xl font-black">ISO 27001</div>
+                  <div className="text-4xl font-black text-justify">Unbreakable Trust</div>
                   <div className="text-base font-medium mt-2">
                     Bank-Grade Security
                   </div>
