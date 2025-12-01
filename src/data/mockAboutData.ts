@@ -4,14 +4,14 @@ export const mockAboutData = {
   description:
     "We are a team of passionate developers, designers, and innovators dedicated to creating cutting-edge digital solutions that transform capital markets and enhance user experiences.",
   mission:
-    "To empower businesses with secure, efficient, and innovative technology that drives transparency and growth in capital markets.",
+    "At Digi Hub, our mission is to empower businesses and individuals by delivering cutting-edge technology solutions that boost efficiency, transparency, and accessibility across various industries. We are dedicated to building seamless, secure and reliable platforms that foster growth and profitability, enabling our clients to reach their fullest potential in a rapidly changing digital world.",
   vision:
-    "To become the global leader in fintech innovation, setting new standards for excellence, reliability, and trust.",
+    "Our vision is to become a global leader in technology-driven solutions, revolutionizing industries and setting new benchmarks for excellence in capital markets, fintech, and beyond. We aim to consistently innovate, broaden our offerings, and provide exceptional value to our clients, shaping a future where technology is the foundation of sustainable growth and success for everyone.",
 };
 
 export const mockAboutStats = [
   { value: "50+", title: "Projects Delivered" },
-  { value: "25+", title: "Expert Team Members" },
+  { value: "30+", title: "Expert Team Members" },
   { value: "5+", title: "Years of Excellence" },
   { value: "100%", title: "Client Satisfaction" },
 ];

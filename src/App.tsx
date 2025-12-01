@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import Layout from "./components/layout/Layout";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import LoadingSpinner from "./components/common/LoadingSpinner";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 // Lazy load page components
 const Home = lazy(() => import("./pages/Home"));
@@ -51,6 +52,7 @@ function App() {
             <Layout>
               <AnimatePresence mode="wait">
                 <Suspense fallback={<LoadingSpinner />}>
+                  <ScrollToTop />
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />

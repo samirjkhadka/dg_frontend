@@ -24,8 +24,9 @@ export default {
         light: "#f3f4f6",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Poppins", "sans-serif"],
+        sans: ["Satoshi", "sans-serif"],
+        display: ["Clash Display", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular"],
       },
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",

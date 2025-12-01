@@ -192,7 +192,7 @@ const ServiceDetail = () => {
               How We Deliver
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              A battle-tested process refined over 200+ successful deployments
+              A battle-tested process refined over 20+ successful deployments
             </p>
           </motion.div>
 
@@ -253,7 +253,7 @@ const ServiceDetail = () => {
               Ready to Transform Your Brokerage?
             </h2>
             <p className="text-2xl text-white/90 mb-12">
-              Join 50+ leading institutions already using {service.title}
+              Join 20+ leading institutions already using {service.title}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -265,7 +265,7 @@ const ServiceDetail = () => {
                 <ArrowRight className="w-8 h-8" />
               </Link>
               <a
-                href="tel:+97714433999"
+                href="tel:+97714547745"
                 className="inline-flex items-center gap-4 px-12 py-7 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full text-white font-bold text-xl hover:bg-white/20 transition"
               >
                 <Phone className="w-7 h-7" />
@@ -276,11 +276,11 @@ const ServiceDetail = () => {
             <div className="mt-12 flex items-center justify-center gap-8 text-white/80 text-lg">
               <div className="flex items-center gap-3">
                 <Mail className="w-6 h-6" />
-                hello@digihub.com.np
+                support@dghub.io
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-6 h-6" />
-                +977 1 4433 999
+                +977 1 454 7745
               </div>
             </div>
           </motion.div>

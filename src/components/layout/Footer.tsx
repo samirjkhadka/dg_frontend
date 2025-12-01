@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, memo } from "react";
 import { iconMap } from "@/lib/icons";
 import { mockContactInfo } from "@/data/mockContactData";
+import { mockCategories } from "@/data/mockServicesData";
 
 const { ArrowUp, Mail, Phone, MapPin, Copyright } = iconMap;
 
@@ -172,7 +173,8 @@ const Footer = () => {
               <ul className="space-y-4">
                 <FooterLink to="/about">About Us</FooterLink>
                 <FooterLink to="/services">Services</FooterLink>
-                <FooterLink to="/portfolio">Portfolio</FooterLink>
+                <FooterLink to="/demo">Product Tutorials</FooterLink>
+                {/* <FooterLink to="/portfolio">Portfolio</FooterLink> */}
                 <FooterLink to="/contact">Contact</FooterLink>
               </ul>
             </motion.div>
@@ -187,14 +189,22 @@ const Footer = () => {
                 Our Services
               </h3>
               <ul className="space-y-4 text-sm">
-                <FooterLink to="/services#category-1">
-                  Trading Platforms
-                </FooterLink>
-                <FooterLink to="/services#category-2">
-                  Risk & Compliance
-                </FooterLink>
-                <FooterLink to="/services#category-3">Market Data</FooterLink>
-                <FooterLink to="/services#category-4">Mobile Apps</FooterLink>
+                {mockCategories.map((category) => (
+                  <li key={category.id}>
+                    <Link
+                      to="/services"
+                      onClick={(e) => {
+                        e.preventDefault();
+
+                        // 1. Navigate to /services
+                        window.location.href = `/services#category-${category.id}`;
+                      }}
+                      className="text-gray-600 dark:text-gray-400 hover:text-[#084097] dark:hover:text-cyan-400 transition-colors font-medium block py-1"
+                    >
+                      {category.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </motion.div>
 

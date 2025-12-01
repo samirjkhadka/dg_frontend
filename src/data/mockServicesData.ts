@@ -44,20 +44,6 @@ export const mockCategories: Category[] = [
       "Native iOS & Android apps with real-time sync and biometric login",
     icon: "Smartphone",
   },
-  // {
-  //   id: "5",
-  //   title: "Backend Infrastructure",
-  //   description:
-  //     "Scalable microservices, WebSocket servers, and cloud deployment",
-  //   icon: "Server",
-  // },
-  // {
-  //   id: "6",
-  //   title: "AI & Automation",
-  //   description:
-  //     "Algorithmic trading bots, predictive analytics, and smart alerts",
-  //   icon: "Brain",
-  // },
 ];
 
 export const mockService: Service[] = [
@@ -105,23 +91,9 @@ export const mockService: Service[] = [
       "Regulatory Alerts",
     ],
   },
-  // {
-  //   id: 4,
-  //   categoryId: "2",
-  //   title: "KYC/AML Suite",
-  //   icon: "FileCheck",
-  //   description: "Automated identity verification and transaction monitoring.",
-  //   features: [
-  //     "eKYC Integration",
-  //     "PEP & Sanction Screening",
-  //     "Suspicious Activity Reports",
-  //     "Document Management",
-  //   ],
-  // },
-
   // Market Data
   {
-    id: 5,
+    id: 4,
     categoryId: "3",
     title: "Live Market Feed",
     icon: "Radio",
@@ -134,7 +106,7 @@ export const mockService: Service[] = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     categoryId: "3",
     title: "Analytics Dashboard",
     icon: "BarChart3",
@@ -150,7 +122,7 @@ export const mockService: Service[] = [
 
   // Mobile
   {
-    id: 7,
+    id: 6,
     categoryId: "4",
     title: "iOS & Android Apps",
     icon: "Smartphone",

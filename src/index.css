@@ -1,4 +1,5 @@
 /* src/index.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,6 +15,16 @@
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  font-family: "Satoshi", system-ui, sans-serif;
+}
+
+.font-clash {
+  font-family: "Clash Display", sans-serif;
+}
+
+.font-montreal {
+  font-family: "Neue Montreal", "Satoshi", sans-serif;
+  letter-spacing: -0.02em;
 }
 
 body {

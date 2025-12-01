@@ -1,7 +1,7 @@
 // src/data/mockContactData.ts
 export const mockContactInfo = {
   address: "Niketan Marg, Charkhaal, Dillibazaar, Kathmandu, Nepal",
-  phone: "+977-014547745, 9801890407",
+  phone: "+977-1-4547745, 9801890407",
   email: "support@dghub.io, support@digihub.com.np",
   hours: "Sunday – Friday: 9:30 AM – 6:00 PM",
   mapUrl:

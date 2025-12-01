@@ -75,9 +75,9 @@ export default function Services() {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
                 {[
-                  { num: "10+", label: "Years in Fintech" },
-                  { num: "200+", label: "Deployments" },
-                  { num: "50+", label: "Institutions" },
+                  { num: "5+", label: "Years in Capital Markets" },
+                  { num: "20+", label: "Deployments" },
+                  { num: "50+", label: "Projects Delivered" },
                   { num: "100%", label: "Uptime SLA" },
                 ].map((stat, i) => (
                   <motion.div

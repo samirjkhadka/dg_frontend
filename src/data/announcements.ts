@@ -11,7 +11,7 @@ export const announcements: Announcement[] = [
     id: "1",
     message:
       "Digi Hub powers new real-time trading platform for Broker No. 46 — Launching this week!",
-    isActive: true,
+    isActive: false,
     link: "/portfolio/broker-46",
   },
 ];
