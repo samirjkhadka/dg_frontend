@@ -48,25 +48,6 @@ export default function Contact() {
       </Helmet>
 
       <div className="pt-24 md:pt-28 lg:pt-32 min-h-screen bg-gray-50 dark:bg-slate-950">
-        {/* Hero */}
-        <section className="relative py-32 bg-gradient-to-br from-[#084097] to-cyan-600 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="container mx-auto px-6 relative z-10 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-            >
-              <h1 className="text-6xl md:text-8xl font-black mb-8">
-                Let’s Talk <span className="text-cyan-300">Trading</span>
-              </h1>
-              <p className="text-2xl md:text-3xl max-w-4xl mx-auto opacity-90">
-                Whether you're a broker, bank, or fintech startup — we speak
-                your language
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Contact Form + Info */}
         <section className="py-24 -mt-16 relative">
           <div className="container mx-auto px-6">
@@ -162,8 +143,8 @@ export default function Contact() {
                       <div className="flex gap-4">
                         <MapPinIcon className="w-7 h-7 text-[#084097]" />
                         <div>
-                          <p className="font-bold text-xl">Kathmandu Office</p>
-                          <p className="text-gray-600 dark:text-gray-300">
+                          <p className="font-bold text-xl">Office Address</p>
+                          <p className="text-[#084097] font-bold dark:text-gray-300">
                             {mockContactInfo.address}
                           </p>
                         </div>
@@ -196,7 +177,7 @@ export default function Contact() {
                         <ClockIcon className="w-7 h-7 text-[#084097]" />
                         <div>
                           <p className="font-bold text-xl">Office Hours</p>
-                          <p className="text-gray-600 dark:text-gray-300">
+                          <p className="text-[#084097] font-bold dark:text-gray-300">
                             {mockContactInfo.hours}
                           </p>
                         </div>

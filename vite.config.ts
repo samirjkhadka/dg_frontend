@@ -14,10 +14,7 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
-    headers: {
-      "Content-Security-Policy":
-        "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://youtube.com https://www.google.com; style-src 'self' 'unsafe-inline'; frame-src 'self' https://www.youtube.com https://youtube.com; connect-src 'self' https://www.youtube.com https://youtube.googleapis.com; img-src 'self' data: https:; media-src 'self' https://www.youtube.com",
-    },
+   
   },
   build: {
     outDir: "dist",

@@ -42,13 +42,13 @@ const About = () => {
               title: "Engineering Excellence",
               desc: "Sub-50ms latency, 99.99% uptime, and systems that scale from 100 to 100,000 concurrent traders.",
               icon: "Zap",
-              gradient: "from-cyan-600 to-teal-600",
+              gradient: "from-[#084097] to-blue-700",
             },
             {
               title: "Unbreakable Trust",
               desc: "Bank-grade security, regular pentests, and full regulatory compliance — your reputation is safe with us.",
               icon: "Shield",
-              gradient: "from-emerald-600 to-green-600",
+              gradient: "from-[#084097] to-blue-700",
             },
           ].map((pillar, i) => {
             const Icon = iconMap[pillar.icon as keyof typeof iconMap];

@@ -33,6 +33,7 @@ import {
   LandmarkIcon,
   Youtube,
   Plug,
+  Instagram
 } from "lucide-react";
 
 export const iconMap = {
@@ -69,6 +70,7 @@ export const iconMap = {
   LandmarkIcon,
   Youtube,
   Plug,
+  Instagram
 } as const;
 
 export type IconName = keyof typeof iconMap;

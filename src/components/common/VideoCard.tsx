@@ -40,9 +40,7 @@ export default function VideoCard({ video }: { video: Video }) {
   const [unlocked, setUnlocked] = useState(false);
   const [thumbLoaded, setThumbLoaded] = useState(false);
 
-  // Whether iframe should be mounted at this moment:
-  // - If unlocked: keep iframe mounted once it's been activated (inView true and either hovered or unlocked)
-  // - If not unlocked: mount only while hovering (and only if inView)
+  
   const shouldMountIframe = inView && (hover || unlocked);
 
   // Create src for iframe based on mute state
@@ -185,7 +183,7 @@ export default function VideoCard({ video }: { video: Video }) {
             <motion.div
               className={`
                 w-20 h-20 bg-white/90 dark:bg-black/80 rounded-full flex items-center justify-center shadow-2xl
-                transition-transform transition-opacity duration-300
+                transition-transform duration-300
                 ${hover ? "opacity-0 scale-75" : "opacity-100 scale-100"}
               `}
               aria-hidden

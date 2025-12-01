@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/home/Carousel";
 import { mockHeroData, mockHeroStats } from "@/data/mockHomeData";
@@ -6,10 +5,8 @@ import ClientMarquee from "@/components/common/ClientMarquee";
 import WhyChoose from "@/components/home/WhyChoose";
 import Features from "@/components/home/Features";
 import FloatingDemoButton from "@/components/layout/FloatingDemoButton";
-import AnnouncementTicker from "@/components/common/AnnoucementTicker";
 import About from "@/components/home/About";
 import Services from "@/components/home/Services";
-import Tutorials from "@/components/home/Tutorials";
 import Contact from "@/components/home/Contact";
 
 const Home = () => {
@@ -24,9 +21,7 @@ const Home = () => {
       </Helmet>
 
       {/* Main Wrapper */}
-      <div className="pt-24 md:pt-28 lg:pt-32 min-h-screen bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-        <AnnouncementTicker />
-
+      <div className="min-h-screen bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
         {/* Hero Section */}
 
         <section id="home">
@@ -44,7 +39,7 @@ const Home = () => {
 
         <Features />
 
-        <Tutorials />
+        {/* <Tutorials /> */}
         {/* <TestimonialsSection /> */}
 
         <Contact />

@@ -1,4 +1,4 @@
-// src/components/common/ClientMarquee.tsx
+
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -8,7 +8,7 @@ const ClientMarquee = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Duplicate clients for seamless loop
+
   const clients = [...mockClients, ...mockClients];
 
   // Auto-scroll effect
@@ -16,7 +16,7 @@ const ClientMarquee = () => {
     if (!scrollRef.current || isHovered) return;
 
     const scrollContainer = scrollRef.current;
-    const scrollWidth = scrollContainer.scrollWidth / 2; // Only half because duplicated
+    const scrollWidth = scrollContainer.scrollWidth / 2; 
     let animationFrame: number;
 
     const scroll = () => {

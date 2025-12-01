@@ -8,17 +8,7 @@ const Services = () => {
   const navigate = useNavigate();
 
   const handleServiceClick = (categoryId: string) => {
-    navigate("/services#category-${categoryId}"); // Go to services page
-
-    // Wait for navigation + React render, then scroll
-    setTimeout(() => {
-      const element = document.getElementById(`category-${categoryId}`);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-        // Offset for fixed header (adjust -120 if your header is taller/shorter)
-        window.scrollBy(0, -120);
-      }
-    }, 200); // 200ms is perfect — tested on slow & fast devices
+    navigate(`/services#category-${categoryId}`); // Go to services page
   };
 
   const handleViewAllServices = () => {

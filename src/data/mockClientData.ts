@@ -61,7 +61,7 @@ export const mockClients: Client[] = [
     name: "Himalayan Brokerage Company Ltd",
     logo: "/images/clients/bn63.jpg",
     width: 160,
-    isNew: true,
+    isNew: false,
   },
   {
     name: "Dynamic Securities",

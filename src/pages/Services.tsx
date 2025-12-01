@@ -69,8 +69,8 @@ export default function Services() {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Enterprise-grade technology trusted by Nepal’s leading brokers
-                and banks. From real-time trading to AI-driven insights.
+                Enterprise-grade technology trusted by Nepal’s leading brokers .
+                From real-time trading to AI-driven insights.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">

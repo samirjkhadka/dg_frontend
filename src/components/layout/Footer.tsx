@@ -257,7 +257,7 @@ const Footer = () => {
               <Copyright className="w-4 h-4" />
               <span>{year} Digi Hub. All rights reserved.</span>
             </div>
-            <div className="flex gap-6">
+            {/* <div className="flex gap-6">
               <Link
                 to="/privacy"
                 className="hover:text-[#084097] dark:hover:text-cyan-400 transition"
@@ -270,7 +270,7 @@ const Footer = () => {
               >
                 Terms of Service
               </Link>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </footer>
