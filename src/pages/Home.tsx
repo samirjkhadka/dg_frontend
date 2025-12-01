@@ -1,21 +1,16 @@
 // src/pages/Home.tsx
-import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/home/Carousel";
 import { mockHeroData, mockHeroStats } from "@/data/mockHomeData";
 import ClientMarquee from "@/components/common/ClientMarquee";
-import { iconMap } from "@/lib/icons";
 import WhyChoose from "@/components/home/WhyChoose";
 import Features from "@/components/home/Features";
 import FloatingDemoButton from "@/components/layout/FloatingDemoButton";
 import AnnouncementTicker from "@/components/common/AnnoucementTicker";
 import About from "@/components/home/About";
 import Services from "@/components/home/Services";
-import Portfolio from "@/components/home/Portfolio";
 import Tutorials from "@/components/home/Tutorials";
 import Contact from "@/components/home/Contact";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const Home = () => {
   return (

@@ -1,7 +1,7 @@
 import { mockProject } from "@/data/mockPortfolioData";
 import { iconMap } from "@/lib/icons";
 import { motion } from "framer-motion";
-import React from "react";
+
 import { Link } from "react-router-dom";
 
 const Portfolio = () => {
